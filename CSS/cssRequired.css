@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+.normal {
+	font-weight: normal;
+}
+
+.normal .red {
+	display: none;
+	margin-right: .25em;
+}
+
+.required {
+	font-weight: bold;
+}
+
+.required .red {
+	color: red;
+	margin-right: .25em;

@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+
+h4 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	margin: 0px;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+}
+h6 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	margin: 0px;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+}
+p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	margin: 0px;
+}
+#formCheckBox {
+	text-align: center;
+	width: 40px;
+}
+#textArea{
+	text-align: center;
+	width: 175px;
+}
+
+#notice{
+	background-color: silver;
+	border: 2px solid;
+}
+#headerColours {
+	font-weight: bold;
+	background-color: #FF0;
+	text-align: center;
+	height: 35px;
+	width: 760px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	padding-top: 17px;
+	border: thin solid #000;
+	padding-right: 5px;
+	padding-left: 5px;
+}
