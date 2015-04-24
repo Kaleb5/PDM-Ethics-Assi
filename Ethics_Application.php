@@ -13,8 +13,6 @@
 <body>
 
 <?php
-
-	$TriageJust = "";
 	
 	if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
@@ -1512,6 +1510,10 @@
 			print 'Application submitted';
 		}
 	}
+	else
+	{
+		print 'Application not submitted. Please ensure all required fields have been completed.';
+	}
 
 	mysql_close();
 	}
@@ -1604,112 +1606,112 @@
       </tr>
       <tr>
         <td>
-            <p><label class="normal" id="Triage01L"><span class="red"><?php if($SubValCheck && $Triage1=="") echo '*' ?></span></label>Interventions and therapies, including clinical and non-clinical trials</p>
+            <p><label class="normal" id="Triage01L"><span class="red">*</span></label>Interventions and therapies, including clinical and non-clinical trials</p>
         </td>
         <td>
             <div id="formCheckBox">
-              <input type="radio" name="Triage01" <?php if (isset($Triage1) && $Triage1=="No") echo "checked";?> onClick="triageJustUD();" value="No" id="Triage01_no" />
+              <input type="radio" name="Triage01" <?php if (isset($Triage1) && $Triage1=="No") echo "checked";?> onClick="triage1UD();" value="No" id="Triage01_no" />
             </div>
         </td>
         <td>
             <div id="formCheckBox">
-              <input type="radio" name="Triage01" <?php if (isset($Triage1) && $Triage1=="Yes") echo "checked";?> onClick="triageJustUD();" value="Yes" id="Triage01_yes" />
-            </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-            <p><label class="normal" id="Triage02L"><span class="red"><?php if($SubValCheck && $Triage2=="") echo '*' ?></span></label>Human genetics</p>
-        </td>
-        <td>
-            <div id="formCheckBox">
-              <input type="radio" name="Triage02" <?php if (isset($Triage2) && $Triage2=="No") echo "checked";?> onClick="triageJustUD();" value="No" id="Triage02_no" />
-            </div>
-        </td>
-        <td>
-            <div id="formCheckBox">
-              <input type="radio" name="Triage02" <?php if (isset($Triage2) && $Triage2=="Yes") echo "checked";?> onClick="triageJustUD();" value="Yes" id="Triage02_yes" />
+              <input type="radio" name="Triage01" <?php if (isset($Triage1) && $Triage1=="Yes") echo "checked";?> onClick="triage1UD();" value="Yes" id="Triage01_yes" />
             </div>
         </td>
       </tr>
       <tr>
         <td>
-            <p><label class="normal" id="Triage03L"><span class="red"><?php if($SubValCheck && $Triage3=="") echo '*' ?></span></label>Women who are pregnant and/or the human fetus</p>
+            <p><label class="normal" id="Triage02L"><span class="red">*</span></label>Human genetics</p>
         </td>
         <td>
             <div id="formCheckBox">
-              <input type="radio" name="Triage03" <?php if (isset($Triage3) && $Triage3=="No") echo "checked";?> onClick="triageJustUD();" value="No" id="Triage03_no" />
+              <input type="radio" name="Triage02" <?php if (isset($Triage2) && $Triage2=="No") echo "checked";?> onClick="triage2UD();" value="No" id="Triage02_no" />
             </div>
         </td>
         <td>
             <div id="formCheckBox">
-              <input type="radio" name="Triage03" <?php if (isset($Triage3) && $Triage3=="Yes") echo "checked";?> onClick="triageJustUD();" value="Yes" id="Triage03_yes" />
-            </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-            <p><label class="normal" id="Triage04L"><span class="red"><?php if($SubValCheck && $Triage4=="") echo '*' ?></span></label>People who are highly dependent on medical care who may be unable to give consent</p>
-        </td>
-        <td>
-            <div id="formCheckBox">
-              <input type="radio" name="Triage04" <?php if (isset($Triage4) && $Triage4=="No") echo "checked";?> onClick="triageJustUD();" value="No" id="Triage04_no" />
-            </div>
-        </td>
-        <td>
-            <div id="formCheckBox">
-              <input type="radio" name="Triage04" <?php if (isset($Triage4) && $Triage4=="Yes") echo "checked";?> onClick="triageJustUD();" value="Yes" id="Triage04_yes" />
+              <input type="radio" name="Triage02" <?php if (isset($Triage2) && $Triage2=="Yes") echo "checked";?> onClick="triage2UD();" value="Yes" id="Triage02_yes" />
             </div>
         </td>
       </tr>
       <tr>
         <td>
-            <p><label class="normal" id="Triage05L"><span class="red"><?php if($SubValCheck && $Triage5=="") echo '*' ?></span></label>People with a cognitive impairment, intellectual disability or a mental illness</p>
+            <p><label class="normal" id="Triage03L"><span class="red">*</span></label>Women who are pregnant and/or the human fetus</p>
         </td>
         <td>
             <div id="formCheckBox">
-              <input type="radio" name="Triage05" <?php if (isset($Triage5) && $Triage5=="No") echo "checked";?> onClick="triageJustUD();" value="No" id="Triage05_no" />
+              <input type="radio" name="Triage03" <?php if (isset($Triage3) && $Triage3=="No") echo "checked";?> onClick="triage3UD();" value="No" id="Triage03_no" />
             </div>
         </td>
         <td>
             <div id="formCheckBox">
-              <input type="radio" name="Triage05" <?php if (isset($Triage5) && $Triage5=="Yes") echo "checked";?> onClick="triageJustUD();" value="Yes" id="Triage05_yes" />
-            </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-            <p><label class="normal" id="Triage06L"><span class="red"><?php if($SubValCheck && $Triage6=="") echo '*' ?></span></label>Research specifically targeting Aboriginal or Torres Strait Islanders</p>
-        </td>
-        <td>
-            <div id="formCheckBox">
-              <input type="radio" name="Triage06" <?php if (isset($Triage6) && $Triage6=="No") echo "checked";?> onClick="triageJustUD();" value="No" id="Triage06_no" />
-            </div>
-        </td>
-        <td>
-            <div id="formCheckBox">
-              <input type="radio" name="Triage06" <?php if (isset($Triage6) && $Triage6=="Yes") echo "checked";?> onClick="triageJustUD();" value="Yes" id="Triage06_yes" />
+              <input type="radio" name="Triage03" <?php if (isset($Triage3) && $Triage3=="Yes") echo "checked";?> onClick="triage3UD();" value="Yes" id="Triage03_yes" />
             </div>
         </td>
       </tr>
       <tr>
         <td>
-            <p><label class="normal" id="Triage07L"><span class="red"><?php if($SubValCheck && $Triage7=="") echo '*' ?></span></label>People who may be involved in illegal activities</p>
+            <p><label class="normal" id="Triage04L"><span class="red">*</span></label>People who are highly dependent on medical care who may be unable to give consent</p>
         </td>
         <td>
             <div id="formCheckBox">
-              <input type="radio" name="Triage07" <?php if (isset($Triage7) && $Triage7=="No") echo "checked";?> onClick="triageJustUD();" value="No" id="Triage07_no" />
+              <input type="radio" name="Triage04" <?php if (isset($Triage4) && $Triage4=="No") echo "checked";?> onClick="triage4UD();" value="No" id="Triage04_no" />
             </div>
         </td>
         <td>
             <div id="formCheckBox">
-              <input type="radio" name="Triage07" <?php if (isset($Triage7) && $Triage7=="Yes") echo "checked";?> onClick="triageJustUD();" value="Yes" id="Triage07_yes" />
+              <input type="radio" name="Triage04" <?php if (isset($Triage4) && $Triage4=="Yes") echo "checked";?> onClick="triage4UD();" value="Yes" id="Triage04_yes" />
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <p><label class="normal" id="Triage05L"><span class="red">*</span></label>People with a cognitive impairment, intellectual disability or a mental illness</p>
+        </td>
+        <td>
+            <div id="formCheckBox">
+              <input type="radio" name="Triage05" <?php if (isset($Triage5) && $Triage5=="No") echo "checked";?> onClick="triage5UD();" value="No" id="Triage05_no" />
+            </div>
+        </td>
+        <td>
+            <div id="formCheckBox">
+              <input type="radio" name="Triage05" <?php if (isset($Triage5) && $Triage5=="Yes") echo "checked";?> onClick="triage5UD();" value="Yes" id="Triage05_yes" />
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <p><label class="normal" id="Triage06L"><span class="red">*</span></label>Research specifically targeting Aboriginal or Torres Strait Islanders</p>
+        </td>
+        <td>
+            <div id="formCheckBox">
+              <input type="radio" name="Triage06" <?php if (isset($Triage6) && $Triage6=="No") echo "checked";?> onClick="triage6UD();" value="No" id="Triage06_no" />
+            </div>
+        </td>
+        <td>
+            <div id="formCheckBox">
+              <input type="radio" name="Triage06" <?php if (isset($Triage6) && $Triage6=="Yes") echo "checked";?> onClick="triage6UD();" value="Yes" id="Triage06_yes" />
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <p><label class="normal" id="Triage07L"><span class="red">*</span></label>People who may be involved in illegal activities</p>
+        </td>
+        <td>
+            <div id="formCheckBox">
+              <input type="radio" name="Triage07" <?php if (isset($Triage7) && $Triage7=="No") echo "checked";?> onClick="triage7UD();" value="No" id="Triage07_no" />
+            </div>
+        </td>
+        <td>
+            <div id="formCheckBox">
+              <input type="radio" name="Triage07" <?php if (isset($Triage7) && $Triage7=="Yes") echo "checked";?> onClick="triage7UD();" value="Yes" id="Triage07_yes" />
             </div>
         </td>
       </tr>
     </table>
-    <p><br /><label class="normal" id="TriageJustL"><span class="red"><?php if($SubValCheck && $TriageJustCheck && $TriageJust == "") echo '*' ?></span></label>A "yes" response to any of the above questions would normally indicate your project is not eligible for a Low or Negligible Risk review. However, a "Yes" answer does not necessarily, automatically, preclude the research from being reviewed through a low risk review process. If you answered "yes" to any of the above questions and you think your study should be reviewed through the low risk process please justify why in the space below.</p>
-    <textarea name="TriageJustify" cols="205" rows="7"><?php echo $TriageJust ?></textarea>
+    <p><br /><label class="normal" id="TriageJustL"><span class="red">*</span></label>A "yes" response to any of the above questions would normally indicate your project is not eligible for a Low or Negligible Risk review. However, a "Yes" answer does not necessarily, automatically, preclude the research from being reviewed through a low risk review process. If you answered "yes" to any of the above questions and you think your study should be reviewed through the low risk process please justify why in the space below.</p>
+    <textarea name="TriageJustify" cols="205" rows="7" onChange="triageJustUD();"><?php if (isset($TriageJust)) echo $TriageJust; else echo "";?></textarea>
     </div>
             <div class="TabbedPanelsContent"> <!-- Section 1 -->
 				<table id="section">
@@ -1721,16 +1723,16 @@
 				<table id="sectionsub">
 					<tr>
 						<th id="leftcol">1</th>
-						<th id="rightcol"><label class="normal" id="Q1input01L"><span class="red"><?php if($SubValCheck && $PQ1input01 == "") echo '*' ?></span></label>Project Title</th>
+						<th id="rightcol"><label class="normal" id="Q1input01L"><span class="red">*</span></label>Project Title</th>
 					</tr>
 				</table>
-				<input name="Q1input01" maxlength="30" style="border: 1px solid black" type="text" size="118" value="<?php if (isset($PQ1input01)) echo $PQ1input01 ?>" />
+				<input name="Q1input01" onBlur="Q1input01UD();" maxlength="30" style="border: 1px solid black" type="text" size="118" value="<?php echo ""; if (isset($PQ1input01)) echo $PQ1input01; ?>" />
                 <br />
 				<br />
 				<table id="sectionsub">
 					<tr>
 						<th id="leftcol">2</th>
-						<th id="rightcol"><label class="normal" id="Q2select01L"><span class="red"><?php if($SubValCheck && $PQ2select01 == "choose") echo '*' ?></span></label>Please indicate the type of project</th>
+						<th id="rightcol"><label class="normal" id="Q2select01L"><span class="red">*</span></label>Please indicate the type of project</th>
 					</tr>
 				</table>
 				<br />
@@ -1748,7 +1750,7 @@
 						  <option value="other" <?php if(isset($PQ2select01) && $PQ2select01 == "other") {echo "selected=\"selected\"";} ?>>Other (specify)</option>
                         </select>
 						</td>
-						<td id="projecttype3" ><label class="normal" id="Q2input01L"><span class="red"><?php if($SubValCheck && $PQ2input01 == "" && $PQ2select01 == "other") echo '*' ?></span></label><input name="Q2input01" type="text" id="styled" value="<?php if(isset($PQ2input01)) {echo $PQ2input01;} else {echo "Other";} ?>" size="40" maxlength="40" /></td>
+						<td id="projecttype3" ><label class="normal" id="Q2input01L"><span class="red">*</span></label><input name="Q2input01" type="text" id="styled" value="<?php if(isset($PQ2input01)) {echo $PQ2input01;} else {echo "Other";} ?>" size="40" maxlength="40" /></td>
 					</tr>
 				</table>
                 <br />
