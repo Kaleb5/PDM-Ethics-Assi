@@ -1711,7 +1711,7 @@
       </tr>
     </table>
     <p><br /><label class="normal" id="TriageJustL"><span class="red">*</span></label>A "yes" response to any of the above questions would normally indicate your project is not eligible for a Low or Negligible Risk review. However, a "Yes" answer does not necessarily, automatically, preclude the research from being reviewed through a low risk review process. If you answered "yes" to any of the above questions and you think your study should be reviewed through the low risk process please justify why in the space below.</p>
-    <textarea name="TriageJustify" cols="205" rows="7" id="TriageJustify" onchange="triageJustUD();" disabled="disabled"><?php if (isset($TriageJust)) echo $TriageJust; else echo "";?></textarea>
+    <textarea name="TriageJustify" cols="205" rows="7" onChange="triageJustUD();"><?php if (isset($TriageJust)) echo $TriageJust; else echo "";?></textarea>
     </div>
             <div class="TabbedPanelsContent"> <!-- Section 1 -->
 				<table id="section">
@@ -1722,24 +1722,24 @@
 				<br />
 				<table id="sectionsub">
 					<tr>
-						<th id="leftcol"><label class="normal" id="Q1input01L"><span class="red">*</span></label>1</th>
-						<th id="rightcol">Project Title</th>
+						<th id="leftcol">1</th>
+						<th id="rightcol"><label class="normal" id="Q1input01L"><span class="red">*</span></label>Project Title</th>
 					</tr>
 				</table>
-				<input name="Q1input01" onBlur="Q1input01UD();" maxlength="30" style="border: 1px solid black" type="text" size="118" id ="Q1input01" value="<?php echo ""; if (isset($PQ1input01)) echo $PQ1input01; ?>" />
+				<input name="Q1input01" onBlur="Q1input01UD();" maxlength="30" style="border: 1px solid black" type="text" size="118" value="<?php echo ""; if (isset($PQ1input01)) echo $PQ1input01; ?>" />
                 <br />
 				<br />
 				<table id="sectionsub">
 					<tr>
-						<th id="leftcol"><label class="normal" id="Q2select01L"><span class="red">*</span></label>2</th>
-						<th id="rightcol">Please indicate the type of project</th>
+						<th id="leftcol">2</th>
+						<th id="rightcol"><label class="normal" id="Q2select01L"><span class="red">*</span></label>Please indicate the type of project</th>
 					</tr>
 				</table>
 				<br />
 				<table id="projecttypetable">
 					<tr>
 						<td id="projecttype1">
-						<select name="Q2select01" id="Q2select01" onChange="Q2select01UD();">
+						<select name="Q2select01">
 						  <option value="choose" <?php if(isset($PQ2select01) && $PQ2select01 == "choose") {echo "selected=\"selected\"";} ?>>Please Choose</option>
 						  <option value="stfPrj" <?php if(isset($PQ2select01) && $PQ2select01 == "stfPrj") {echo "selected=\"selected\"";} ?>>Staff Project</option>
 						  <option value="ugrad" <?php if(isset($PQ2select01) && $PQ2select01 == "ugrad") {echo "selected=\"selected\"";} ?>>Undergraduate other than honours (no candidacy required)</option>
@@ -1750,7 +1750,7 @@
 						  <option value="other" <?php if(isset($PQ2select01) && $PQ2select01 == "other") {echo "selected=\"selected\"";} ?>>Other (specify)</option>
                         </select>
 						</td>
-						<td id="projecttype3" ><label class="normal" id="Q2input01L"><span class="red">*</span></label><input name="Q2input01" type="text" id="Q2input01" value="<?php if(isset($PQ2input01)) {echo $PQ2input01;} else {echo "Other";} ?>" size="40" maxlength="40" disabled="disabled" /></td>
+						<td id="projecttype3" ><label class="normal" id="Q2input01L"><span class="red">*</span></label><input name="Q2input01" type="text" id="styled" value="<?php if(isset($PQ2input01)) {echo $PQ2input01;} else {echo "Other";} ?>" size="40" maxlength="40" /></td>
 					</tr>
 				</table>
                 <br />
@@ -1774,7 +1774,7 @@
 						</th>
 					</tr>
 				</table>
-				<textarea name="Q3textarea01" maxlength="900" rows="10" cols="116" id="Q3textarea01"><?php if (isset($PQ3textarea01))echo $PQ3textarea01; ?></textarea>
+				<textarea name="Q3textarea01" maxlength="900" rows="10" cols="116"><?php if (isset($PQ3textarea01))echo $PQ3textarea01; ?></textarea>
 				<br /><br />
 				<table id="sectionsub">
 					<tr>
@@ -1782,7 +1782,7 @@
 						<th id="rightcol">Aims and hypothesis</th>
 					</tr>
 				</table>
-				<textarea name="Q3textarea02" maxlength="900" rows="4" cols="116" id="Q3textarea02"><?php if (isset($PQ3textarea02))echo $PQ3textarea02; ?></textarea>
+				<textarea name="Q3textarea02" maxlength="900" rows="4" cols="116"><?php if (isset($PQ3textarea02))echo $PQ3textarea02; ?></textarea>
 				<br /><br />
 				<table id="sectionsub">
 					<tr>
@@ -1793,7 +1793,7 @@
 						</th>
 					</tr>
 				</table>
-				<textarea name="Q3textarea03" maxlength="900" rows="16" cols="116" id="Q3textarea03"><?php if (isset($PQ3textarea03))echo $PQ3textarea03; ?></textarea>
+				<textarea name="Q3textarea03" maxlength="900" rows="16" cols="116"><?php if (isset($PQ3textarea03))echo $PQ3textarea03; ?></textarea>
                 <br />
 				<br />
 				<table id="sectionsub">
@@ -2211,19 +2211,19 @@
                     <th id ="rightcol">Is your study a clinical trial? (<a href="https://www.nhmrc.gov.au/book/chapter-3-3-interventions-and-therapies-including-clinical-and-non-clinical-trials-and" target="_blank">NS 3.3</a>)</th>
                 </tr>
             </table>
-            <p><i>A clinical trial is defined as any research project that prospectively assigns human subjects to intervention and comparison groups to 
+            <p><label class="normal" id="Q13input01L"><span class="red">*</span></label><i>A clinical trial is defined as any research project that prospectively assigns human subjects to intervention and comparison groups to 
             study the cause-and-effect relationship between a medical intervention and a health outcome. Medical intervention means any intervention used 
             to modify a health outcome. This definition includes, drugs, surgical procedures, devices, behavioral treatments, process-of-care change etc.</i></p>
             <table width = 800>
                 <tr>
                     <td>
                     	<div id="formCheckBox">
-                    		<input type="radio" name="Q13input01" <?php if (isset($PQ13input01) && $PQ13input01=="No") echo "checked";?> value="No" id="Q13input01_no" />No - <i>please skip to question 14</i>
+                    		<input type="radio" name="Q13input01" <?php if (isset($PQ13input01) && $PQ13input01=="No") echo "checked";?> onClick="Q13input01UD();" value="No" id="Q13input01_no" />No - <i>please skip to question 14</i>
                     	</div>
                     </td>
                     <td>
                     	<div id="formCheckBox">
-                    		<input type="radio" name="Q13input01" <?php if (isset($PQ13input01) && $PQ11input03=="Yes") echo "checked";?> value="Yes" id="Q13input01_yes" />Yes - <i>please answer Question 13 subsections below.</i>
+                    		<input type="radio" name="Q13input01" <?php if (isset($PQ13input01) && $PQ11input03=="Yes") echo "checked";?> onClick="Q13input01UD();" value="Yes" id="Q13input01_yes" />Yes - <i>please answer Question 13 subsections below.</i>
                     	</div>
                     </td>
                 </tr>

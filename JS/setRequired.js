@@ -15,6 +15,8 @@ function requireNone()
 		change('Q1input01L', 'normal');
 		change('Q2select01L', 'normal');
 		change('Q2input01L', 'normal');
+		/* Start of Cats asterix stuff */
+		change('Q13input01L', 'normal');
 	}
 }
 
@@ -41,6 +43,9 @@ function requireAll() {
 		triage6UD();
 		triage7UD();
 		Q1input01UD();
+		/* Start of Cats asterix edits */
+		Q13input01UD();
+	
 	}
 }
 
@@ -131,24 +136,19 @@ function triage7UD() {
 
 
 function triageJustUD() {
-	if(getTextValue("TriageJustify") != "")
-	{
-		change('TriageJustL', 'normal');
-	}
-	else if((getCheckedValue(document.forms['AppForm'].elements['savesub']) == "submit") && (getCheckedValue(document.forms['AppForm'].elements['TriageJustify']) == "") && ((getCheckedValue(document.forms['AppForm'].elements['Triage01']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Triage02']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Triage03']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Triage04']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Triage05']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Triage06']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Triage07']) == "Yes")))
+	if((getCheckedValue(document.forms['AppForm'].elements['TriageJustify']) == "") && ((getCheckedValue(document.forms['AppForm'].elements['Triage01']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Triage02']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Triage03']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Triage04']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Triage05']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Triage06']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Triage07']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Q13input01']) == "Yes")))
 	{
 		change('TriageJustL', 'required');
-		document.forms['AppForm'].elements['TriageJustify'].disabled=false;
 	}
 	else
 	{
-		change('TriageJustL', 'normal');
-		document.forms['AppForm'].elements['TriageJustify'].disabled=true;	
+		change('TriageJustL', 'normal');	
 	}
 }
 
 function Q1input01UD() {
-	if(getTextValue("Q1input01") == "")
+	var content = document.getElementById('Q1input01');
+	if(content.value == "")
 	{
 		change('Q1input01L', 'required');
 	}
@@ -158,23 +158,16 @@ function Q1input01UD() {
 	}
 }
 
-function Q2select01UD() {
-	if(getTextValue("Q2select01") == "choose")
+/* Start of Cats asterix additions */
+function Q13input01UD() {
+	if(getCheckedValue(document.forms['AppForm'].elements['Q13input01']) == "")
 	{
-		change('Q2select01', 'required');
+		change('Q13input01L', 'required');
 	}
 	else
 	{
-		change('Q2select01', 'normal');
-	}
-	
-	if(getTextValue("Q2select01") == "other")
-	{
-		document.forms['AppForm'].elements['Q2input01'].disabled=false;
-	}
-	else
-	{
-		document.forms['AppForm'].elements['Q2input01'].disabled=true;
+		change('Q13input01L', 'normal');
+		triageJustUD();
 	}
 }
 
@@ -198,10 +191,4 @@ function getCheckedValue(radioObj) {
 		}
 	}
 	return "";
-}
-
-function getTextValue(textObj) {
-	var content = document.getElementById(textObj).value;
-	
-	return content;
 }

@@ -66,3 +66,62 @@ p {
 	padding-right: 5px;
 	padding-left: 5px;
 }
+table#section {
+	font-family: Arial, Helvetica, sans-serif;
+	border: 1px solid black;
+	width: 75%;
+	text-align: center;
+	font-weight: bold;
+	background-color: #CC9933;
+}
+table#sectionsub {
+	font-family: Arial, Helvetica, sans-serif;
+	width: 75%;	
+	border-collapse:collapse;
+}
+#leftcol {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 25px;
+	border: 1px solid black;
+	width: 6%;
+	background-color: #E0E0E0; 
+}
+#rightcol {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	border: 1px solid black;
+	text-align: left;
+	padding-left: 8px;
+	background-color: #E0E0E0; 
+}
+table#projecttypetable {
+	border-collapse:collapse;
+	width: 75%;
+	margin: 1px;
+}
+#projecttype1 {
+	border: 1px solid black;
+	width: 6%;
+	text-align: center;
+	
+}
+#projecttype2 {
+	border: 1px solid black;
+	width: 15%;
+	text-align: center;
+}
+#projecttype3 {
+	width: 79%;
+	text-align: left;
+	border: 1px solid black;
+}
+textarea#styled {
+	width: 640px;
+	height: 20px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+}
+#fullbox {
+	border: 1px solid black;
+}
