@@ -2065,7 +2065,7 @@
 			<br />
 			<table id = "sectionsub">
                 <tr>
-                    <th id="leftcol">10</th>
+                    <th id="leftcol"><label class="normal" id="Q10L"><span class="red">*</span></label>10</th>
                     <th id ="rightcol">Please select how you are going to recruit participants (select all that apply) and in the space below describe your recruitment process.</th>
                 </tr>
             </table>
@@ -2078,77 +2078,77 @@
             <tr>
                 <td width="40">
                 	<div id="formCheckBox">
-                    	<input name="Q10input01" type="checkbox" <?php if (isset($PQ10input01) && $PQ10input01=="Yes") echo "checked";?> value="Yes" />
+                    	<input name="Q10input01" type="checkbox" onClick="Q10UD();" <?php if (isset($PQ10input01) && $PQ10input01=="Yes") echo "checked";?> value="Yes" />
                     </div>
                 </td>
                 <td width="220"><p>Database/medical records <i>(please describe the source):</i></p></td>
                 <td width="350">
-                	<textarea name="Q10input02" cols="45" rows="4"><?php if (isset($PQ10input02))echo $PQ10input02; ?></textarea>
+                	<label class="normal" id="Q10input02L"><span class="red">*</span></label><textarea name="Q10input02" id="Q10input02" onBlur="Q10input02UD();" disabled="disabled" cols="45" rows="4"><?php if (isset($PQ10input02))echo $PQ10input02; ?></textarea>
                 </td>
                 <td width="40">
                 	<div id="formCheckBox">
-                    	<input name="Q10input03" type="checkbox" <?php if (isset($PQ10input03) && $PQ10input03=="Yes") echo "checked";?> value="Yes" />
+                    	<input name="Q10input03" type="checkbox" onClick="Q10UD();" <?php if (isset($PQ10input03) && $PQ10input03=="Yes") echo "checked";?> value="Yes" />
                     </div>
                 </td>
                 <td width="220"><p>Snowball recruitment or word of mouth etc. <i>(please list):</i></p></td>
                 <td width="350">
-                	<textarea name="Q10input04" cols="45" rows="4"><?php if (isset($PQ10input04))echo $PQ10input04; ?></textarea>
+                	<label class="normal" id="Q10input04L"><span class="red">*</span></label><textarea name="Q10input04" id="Q10input04" onBlur="Q10input04UD();" disabled="disabled" cols="45" rows="4"><?php if (isset($PQ10input04))echo $PQ10input04; ?></textarea>
                 </td>
             </tr>
             <tr>
                 <td>
                 	<div id="formCheckBox">
-                    	<input name="Q10input05" type="checkbox" <?php if (isset($PQ10input05) && $PQ10input05=="Yes") echo "checked";?> value="Yes" />
+                    	<input name="Q10input05" type="checkbox" onClick="Q10UD();" <?php if (isset($PQ10input05) && $PQ10input05=="Yes") echo "checked";?> value="Yes" />
                     </div>
                 </td>
                 <td><p>Social media including Facebook, Yammer, LinkedIn, Twitter etc. <i>(please list):</i></p></td>
                 <td>
-                	<textarea name="Q10input06" cols="45" rows="4"><?php if (isset($PQ10input06))echo $PQ10input06; ?></textarea>
+                	<label class="normal" id="Q10input06L"><span class="red">*</span></label><textarea name="Q10input06" id="Q10input06" onBlur="Q10input06UD();" disabled="disabled" cols="45" rows="4"><?php if (isset($PQ10input06))echo $PQ10input06; ?></textarea>
                 </td>
                 <td>
                 	<div id="formCheckBox">
-                    	<input name="Q10input07" type="checkbox" <?php if (isset($PQ10input07) && $PQ10input07=="Yes") echo "checked";?> value="Yes" />
+                    	<input name="Q10input07" type="checkbox" onClick="Q10UD();" <?php if (isset($PQ10input07) && $PQ10input07=="Yes") echo "checked";?> value="Yes" />
                     </div>
                 </td>
                 <td><p>Print media including flyers, newspapers, newsletters etc. <i>(please list sources):</i></p></td>
                 <td>
-                	<textarea name="Q10input08" cols="45" rows="4"><?php if (isset($PQ10input08))echo $PQ10input08; ?></textarea>
+                	<label class="normal" id="Q10input08L"><span class="red">*</span></label><textarea name="Q10input08" id="Q10input08" onBlur="Q10input08UD();" disabled="disabled" cols="45" rows="4"><?php if (isset($PQ10input08))echo $PQ10input08; ?></textarea>
                 </td>
             </tr>
             <tr>
                 <td>
                 	<div id="formCheckBox">
-                    	<input name="Q10input09" type="checkbox" <?php if (isset($PQ10input09) && $PQ10input09=="Yes") echo "checked";?> value="Yes" />
+                    	<input name="Q10input09" type="checkbox" onClick="Q10UD();" <?php if (isset($PQ10input09) && $PQ10input09=="Yes") echo "checked";?> value="Yes" />
                     </div>
                 </td>
                 <td><p>Classroom or hospital or clinic or community groups etc. <i>(please list sources):</i></p></td>
                 <td>
-                	<textarea name="Q10input10" cols="45" rows="4"><?php if (isset($PQ10input10))echo $PQ10input10; ?></textarea>
+                	<label class="normal" id="Q10input10L"><span class="red">*</span></label><textarea name="Q10input10" id="Q10input10" onBlur="Q10input10UD();" disabled="disabled" cols="45" rows="4"><?php if (isset($PQ10input10))echo $PQ10input10; ?></textarea>
                 </td>
                 <td>
                 	<div id="formCheckBox">
-                    	<input name="Q10input11" type="checkbox" <?php if (isset($PQ10input11) && $PQ10input11=="Yes") echo "checked";?> value="Yes" />
+                    	<input name="Q10input11" type="checkbox" onClick="Q10UD();" <?php if (isset($PQ10input11) && $PQ10input11=="Yes") echo "checked";?> value="Yes" />
                     </div>
                 </td>
                 <td><p>Radio/television <i>(please list sources):</i></p></td>
                 <td>
-                	<textarea name="Q10input12" cols="45" rows="4"><?php if (isset($PQ10input12))echo $PQ10input12; ?></textarea>
+                	<label class="normal" id="Q10input12L"><span class="red">*</span></label><textarea name="Q10input12" id="Q10input12" onBlur="Q10input12UD();" disabled="disabled" cols="45" rows="4"><?php if (isset($PQ10input12))echo $PQ10input12; ?></textarea>
                 </td>
             </tr>
             <tr>
                 <td>
                 	<div id="formCheckBox">
-                    	<input name="Q10input13" type="checkbox" <?php if (isset($PQ10input13) && $PQ10input13=="Yes") echo "checked";?> value="Yes" />
+                    	<input name="Q10input13" type="checkbox" onClick="Q10UD();" <?php if (isset($PQ10input13) && $PQ10input13=="Yes") echo "checked";?> value="Yes" />
                     </div>
                 </td>
                 <td><p>Other <i>(please describe):</i></p></td>
                 <td colspan="4">
-                	<input name="Q10input14" type="text" size="145" maxlength="145" value="<?php if (isset($PQ10input14))echo $PQ10input14; ?>"/>
+                	<label class="normal" id="Q10input14L"><span class="red">*</span></label><input name="Q10input14" id="Q10input14" type="text" size="145" maxlength="145" onBlur="Q10otherUD();" disabled="disabled" value="<?php if (isset($PQ10input14))echo $PQ10input14; ?>"/>
                 </td>
               </tr>
             <tr>
                 <td colspan="6">
-                	<textarea name="Q10input15" cols="45" rows="4"><?php if (isset($PQ10input15))echo $PQ10input15; ?></textarea>
+                	<label class="normal" id="Q10input15L"><span class="red">*</span></label><textarea name="Q10input15" id="Q10input15" onBlur="Q10otherUD();" disabled="disabled" cols="45" rows="4"><?php if (isset($PQ10input15))echo $PQ10input15; ?></textarea>
                 </td>
               </tr>
             </table>
@@ -2156,7 +2156,7 @@
 			<br />
 			<table id = "sectionsub">
                 <tr>
-                    <th id="leftcol">11</th>
+                    <th id="leftcol"><label class="normal" id="Q11input01L"><span class="red">*</span></label>11</th>
                     <th id ="rightcol">Will participants provide consent? (<a href="https://www.nhmrc.gov.au/book/chapter-2-2-general-requirements-consent" target="_blank">NS 2.2</a>, <a href="https://www.nhmrc.gov.au/book/national-statement-ethical-conduct-human-research-2007-updated-december-2013/chapter-2-3-qualif" target="_blank">NS 2.3</a>)</th>
                 </tr>
             </table>
@@ -2166,17 +2166,17 @@
                 <tr>
                     <td>
                     	<div id="formCheckBox">
-                    		<input type="radio" name="Q11input01" <?php if (isset($PQ11input01) && $PQ11input01=="No") echo "checked";?> value="No" id="Q11input01_no" />No - <i>please address section 2.3 of the National Statement below</i>
+                    		<input type="radio" name="Q11input01" onClick="Q11input01UD();" <?php if (isset($PQ11input01) && $PQ11input01=="No") echo "checked";?> value="No" id="Q11input01_no" />No - <i>please address section 2.3 of the National Statement below</i>
                     	</div>
                     </td>
                     <td>
                     	<div id="formCheckBox">
-                    		<input type="radio" name="Q11input01" <?php if (isset($PQ11input01) && $PQ11input01=="Yes") echo "checked";?> value="Yes" id="Q11input01_yes" />Yes - <i>please describe below how you will obtain consent.</i>
+                    		<input type="radio" name="Q11input01" onClick="Q11input01UD();" <?php if (isset($PQ11input01) && $PQ11input01=="Yes") echo "checked";?> value="Yes" id="Q11input01_yes" />Yes - <i>please describe below how you will obtain consent.</i>
                     	</div>
                     </td>
                 </tr>
             </table>
-			<textarea name="Q11input02" cols="205" rows="7"required><?php if (isset($PQ11input02))echo $PQ11input02; ?></textarea>
+			<label class="normal" id="Q11input02L"><span class="red">*</span></label><textarea name="Q11input02" id="Q11input02" onBlur="Q11input02UD();" cols="205" rows="7"required><?php if (isset($PQ11input02))echo $PQ11input02; ?></textarea>
             <br />
 			<br />
 			<table id = "sectionsub">

@@ -24,15 +24,26 @@ function requireNone()
 		change('Q4input04L', 'normal');
 		change('Q4input05L', 'normal');
 		change('Q4input06L', 'normal');
-		change('Q6input02', 'normal');
-		change('Q6input03', 'normal');
-		change('Q6input04', 'normal');
-		change('Q6input05', 'normal');
-		change('Q6input06', 'normal');
-		change('Q7input01', 'normal');
-		change('Q8input01', 'normal');
-		change('Q9input01', 'normal');
-		change('Q9input02', 'normal');
+		change('Q6input02L', 'normal');
+		change('Q6input03L', 'normal');
+		change('Q6input04L', 'normal');
+		change('Q6input05L', 'normal');
+		change('Q6input06L', 'normal');
+		change('Q7input01L', 'normal');
+		change('Q8input01L', 'normal');
+		change('Q9input01L', 'normal');
+		change('Q9input02L', 'normal');
+		change('Q10L', 'normal');
+		change('Q10input02L', 'normal');
+		change('Q10input04L', 'normal');
+		change('Q10input06L', 'normal');
+		change('Q10input08L', 'normal');
+		change('Q10input10L', 'normal');
+		change('Q10input12L', 'normal');
+		change('Q10input14L', 'normal');
+		change('Q10input15L', 'normal');
+		change('Q11input01L', 'normal');
+		change('Q11input02L', 'normal');
 		change('Q12input01L', 'normal');
 	}
 }
@@ -68,6 +79,9 @@ function requireAll() {
 		Q8input01UD();
 		Q9input01UD();
 		Q9input02UD();
+		Q10UD();
+		Q11input01UD();
+		Q11input02UD();
 		Q12input01UD();
 	}
 }
@@ -480,6 +494,248 @@ function Q9input02UD() {
 	else
 	{
 		change('Q9input02L', 'normal');
+	}
+}
+
+function Q10UD() {
+	if((getCheckedValue(document.forms['AppForm'].elements['savesub']) == "submit") && !((getCheckedValue(document.forms['AppForm'].elements['Q10input01']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Q10input03']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Q10input05']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Q10input07']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Q10input09']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Q10input11']) == "Yes") || (getCheckedValue(document.forms['AppForm'].elements['Q10input13']) == "Yes")))
+	{
+		change('Q10L', 'required');
+	}
+	else
+	{
+		change('Q10L', 'normal');
+	}
+	
+	Q10input02UD();
+	Q10input04UD();
+	Q10input06UD();
+	Q10input08UD();
+	Q10input10UD();
+	Q10input12UD();
+	Q10otherUD();
+}
+
+function Q10input02UD() {
+	if((getCheckedValue(document.forms['AppForm'].elements['savesub']) == "submit") && (getCheckedValue(document.forms['AppForm'].elements['Q10input01']) == "Yes"))
+	{
+		if(getTextValue("Q10input02") == "")
+		{
+			change('Q10input02L', 'required');
+		}
+		else
+		{
+			change('Q10input02L', 'normal');
+		}
+	}
+	else
+	{
+		change('Q10input02L', 'normal');
+	}
+	
+	if(getCheckedValue(document.forms['AppForm'].elements['Q10input01']) == "Yes")
+	{
+		document.forms['AppForm'].elements['Q10input02'].disabled=false;
+	}
+	else
+	{
+		document.forms['AppForm'].elements['Q10input02'].disabled=true;
+	}
+}
+
+function Q10input04UD() {
+	if((getCheckedValue(document.forms['AppForm'].elements['savesub']) == "submit") && (getCheckedValue(document.forms['AppForm'].elements['Q10input03']) == "Yes"))
+	{
+		if(getTextValue("Q10input04") == "")
+		{
+			change('Q10input04L', 'required');
+		}
+		else
+		{
+			change('Q10input04L', 'normal');
+		}
+	}
+	else
+	{
+		change('Q10input04L', 'normal');
+	}
+	
+	if(getCheckedValue(document.forms['AppForm'].elements['Q10input03']) == "Yes")
+	{
+		document.forms['AppForm'].elements['Q10input04'].disabled=false;
+	}
+	else
+	{
+		document.forms['AppForm'].elements['Q10input04'].disabled=true;
+	}
+}
+
+function Q10input06UD() {
+	if((getCheckedValue(document.forms['AppForm'].elements['savesub']) == "submit") && (getCheckedValue(document.forms['AppForm'].elements['Q10input05']) == "Yes"))
+	{
+		if(getTextValue("Q10input06") == "")
+		{
+			change('Q10input06L', 'required');
+		}
+		else
+		{
+			change('Q10input06L', 'normal');
+		}
+	}
+	else
+	{
+		change('Q10input06L', 'normal');
+	}
+	
+	if(getCheckedValue(document.forms['AppForm'].elements['Q10input05']) == "Yes")
+	{
+		document.forms['AppForm'].elements['Q10input06'].disabled=false;
+	}
+	else
+	{
+		document.forms['AppForm'].elements['Q10input06'].disabled=true;
+	}
+}
+
+function Q10input08UD() {
+	if((getCheckedValue(document.forms['AppForm'].elements['savesub']) == "submit") && (getCheckedValue(document.forms['AppForm'].elements['Q10input07']) == "Yes"))
+	{
+		if(getTextValue("Q10input08") == "")
+		{
+			change('Q10input08L', 'required');
+		}
+		else
+		{
+			change('Q10input08L', 'normal');
+		}
+	}
+	else
+	{
+		change('Q10input08L', 'normal');
+	}
+	
+	if(getCheckedValue(document.forms['AppForm'].elements['Q10input07']) == "Yes")
+	{
+		document.forms['AppForm'].elements['Q10input08'].disabled=false;
+	}
+	else
+	{
+		document.forms['AppForm'].elements['Q10input08'].disabled=true;
+	}
+}
+
+function Q10input10UD() {
+	if((getCheckedValue(document.forms['AppForm'].elements['savesub']) == "submit") && (getCheckedValue(document.forms['AppForm'].elements['Q10input09']) == "Yes"))
+	{
+		if(getTextValue("Q10input10") == "")
+		{
+			change('Q10input10L', 'required');
+		}
+		else
+		{
+			change('Q10input10L', 'normal');
+		}
+	}
+	else
+	{
+		change('Q10input10L', 'normal');
+	}
+	
+	if(getCheckedValue(document.forms['AppForm'].elements['Q10input09']) == "Yes")
+	{
+		document.forms['AppForm'].elements['Q10input10'].disabled=false;
+	}
+	else
+	{
+		document.forms['AppForm'].elements['Q10input10'].disabled=true;
+	}
+}
+
+function Q10input12UD() {
+	if((getCheckedValue(document.forms['AppForm'].elements['savesub']) == "submit") && (getCheckedValue(document.forms['AppForm'].elements['Q10input11']) == "Yes"))
+	{
+		if(getTextValue("Q10input12") == "")
+		{
+			change('Q10input12L', 'required');
+		}
+		else
+		{
+			change('Q10input12L', 'normal');
+		}
+	}
+	else
+	{
+		change('Q10input12L', 'normal');
+	}
+	
+	if(getCheckedValue(document.forms['AppForm'].elements['Q10input11']) == "Yes")
+	{
+		document.forms['AppForm'].elements['Q10input12'].disabled=false;
+	}
+	else
+	{
+		document.forms['AppForm'].elements['Q10input12'].disabled=true;
+	}
+}
+
+function Q10otherUD() {
+	if((getCheckedValue(document.forms['AppForm'].elements['savesub']) == "submit") && (getCheckedValue(document.forms['AppForm'].elements['Q10input13']) == "Yes"))
+	{
+		if(getTextValue("Q10input14") == "")
+		{
+			change('Q10input14L', 'required');
+		}
+		else
+		{
+			change('Q10input14L', 'normal');
+		}
+		
+		if(getTextValue("Q10input15") == "")
+		{
+			change('Q10input15L', 'required');
+		}
+		else
+		{
+			change('Q10input15L', 'normal');
+		}
+	}
+	else
+	{
+		change('Q10input14L', 'normal');
+		change('Q10input15L', 'normal');
+	}
+	
+	if(getCheckedValue(document.forms['AppForm'].elements['Q10input13']) == "Yes")
+	{
+		document.forms['AppForm'].elements['Q10input14'].disabled=false;
+		document.forms['AppForm'].elements['Q10input15'].disabled=false;
+	}
+	else
+	{
+		document.forms['AppForm'].elements['Q10input14'].disabled=true;
+		document.forms['AppForm'].elements['Q10input15'].disabled=true;
+	}
+}
+
+function Q11input01UD() {
+	if((getCheckedValue(document.forms['AppForm'].elements['savesub']) == "submit") && (getCheckedValue(document.forms['AppForm'].elements['Q11input01']) == ""))
+	{
+		change('Q11input01L', 'required');
+	}
+	else
+	{
+		change('Q11input01L', 'normal');
+	}
+}
+
+function Q11input02UD() {
+	if((getCheckedValue(document.forms['AppForm'].elements['savesub']) == "submit") && (getTextValue("Q11input02") == ""))
+	{
+		change('Q11input02L', 'required');
+	}
+	else
+	{
+		change('Q11input02L', 'normal');
 	}
 }
 
