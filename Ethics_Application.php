@@ -193,7 +193,14 @@
 	}
 	else
 	{
-		$PQ2input01 = test_input($_POST['Q2input01']);
+		if($PQ2select01 != "other")
+		{
+			$PQ2input01 = test_input($_POST['Q2input01']);
+		}
+		else
+		{
+			$PQ2input01 = NULL;
+		}
 	}
 	
 	if (empty($_POST['Q3textarea01']))
@@ -1750,7 +1757,7 @@
 						  <option value="other" <?php if(isset($PQ2select01) && $PQ2select01 == "other") {echo "selected=\"selected\"";} ?>>Other (specify)</option>
                         </select>
 						</td>
-						<td id="projecttype3" ><label class="normal" id="Q2input01L"><span class="red">*</span></label><input name="Q2input01" type="text" id="Q2input01" value="<?php if(isset($PQ2input01)) {echo $PQ2input01;} else {echo "Other";} ?>" size="40" maxlength="40" disabled="disabled" /></td>
+						<td id="projecttype3" ><label class="normal" id="Q2input01L"><span class="red">*</span></label><input name="Q2input01" type="text" id="Q2input01" onBlur="Q2input01UD();" value="<?php if(isset($PQ2input01)) {echo $PQ2input01;} else {echo "Other";} ?>" size="40" maxlength="40" disabled="disabled" /></td>
 					</tr>
 				</table>
                 <br />
@@ -1767,33 +1774,33 @@
 				<br />
 				<table id="sectionsub">
 					<tr>
-						<th id="leftcol">3a</th>
+						<th id="leftcol"><label class="normal" id="Q3textarea01L"><span class="red">*</span></label>3a</th>
 						<th id="rightcol">Background
 						<br />
 						<p style="margin-left:-8px"><i>(No more than 200 words).</i></p>
 						</th>
 					</tr>
 				</table>
-				<textarea name="Q3textarea01" maxlength="900" rows="10" cols="116" id="Q3textarea01"><?php if (isset($PQ3textarea01))echo $PQ3textarea01; ?></textarea>
+				<textarea name="Q3textarea01" maxlength="900" rows="10" cols="116" onBlur="Q3textarea01UD();" id="Q3textarea01"><?php if (isset($PQ3textarea01))echo $PQ3textarea01; ?></textarea>
 				<br /><br />
 				<table id="sectionsub">
 					<tr>
-						<th id="leftcol">3b</th>
+						<th id="leftcol"><label class="normal" id="Q3textarea02L"><span class="red">*</span></label>3b</th>
 						<th id="rightcol">Aims and hypothesis</th>
 					</tr>
 				</table>
-				<textarea name="Q3textarea02" maxlength="900" rows="4" cols="116" id="Q3textarea02"><?php if (isset($PQ3textarea02))echo $PQ3textarea02; ?></textarea>
+				<textarea name="Q3textarea02" maxlength="900" rows="4" cols="116" onBlur="Q3textarea02UD();" id="Q3textarea02"><?php if (isset($PQ3textarea02))echo $PQ3textarea02; ?></textarea>
 				<br /><br />
 				<table id="sectionsub">
 					<tr>
-						<th id="leftcol">3c</th>
-						<th id="rightcol">Background
+						<th id="leftcol"><label class="normal" id="Q3textarea03L"><span class="red">*</span></label>3c</th>
+						<th id="rightcol">Methods
 						<br />
 						<p style="margin-left:-8px"><i>(No more than 200 words).</i></p>
 						</th>
 					</tr>
 				</table>
-				<textarea name="Q3textarea03" maxlength="900" rows="16" cols="116" id="Q3textarea03"><?php if (isset($PQ3textarea03))echo $PQ3textarea03; ?></textarea>
+				<textarea name="Q3textarea03" maxlength="900" rows="16" cols="116" onBlur="Q3textarea03UD();" id="Q3textarea03"><?php if (isset($PQ3textarea03))echo $PQ3textarea03; ?></textarea>
                 <br />
 				<br />
 				<table id="sectionsub">
@@ -1807,30 +1814,30 @@
 				</table>
 				<table style="width: 75%;border-collapse:collapse">
 					<tr>
-						<td style="background-color: #E8E8E8;border: 1px solid black;border-top: none;width: 10px">Name (include title)</td>
-						<td style="border: 1px solid black;width: 35%;border-top: none"> <input name="Q4input01" type="text" value="<?php if (isset($PQ4input01))echo $PQ4input01; ?>" size="30" maxlength="30" /> </td>
-						<td style="border: 1px solid black;width: 25%;border-top: none">Staff ID</td>
-						<td style="border: 1px solid black;width: 15%;border-top: none"> <input name="Q4input02" type="text" value="<?php if (isset($PQ4input02))echo $PQ4input02; ?>" maxlength="10" /> </td>
+						<td style="border: 1px solid black;border-top: none"><label class="normal" id="Q4input01L"><span class="red">*</span></label>Name (include title)</td>
+						<td style="border: 1px solid black;width: 35%;border-top: none"> <input name="Q4input01" type="text" id="Q4input01" onBlur="Q4input01UD();" value="<?php if (isset($PQ4input01))echo $PQ4input01; ?>" size="30" maxlength="30" /> </td>
+						<td style="border: 1px solid black;width: 25%;border-top: none"><label class="normal" id="Q4input02L"><span class="red">*</span></label>Staff ID</td>
+						<td style="border: 1px solid black;width: 15%;border-top: none"> <input name="Q4input02" type="text" id="Q4input02" onBlur="Q4input02UD();" value="<?php if (isset($PQ4input02))echo $PQ4input02; ?>" maxlength="10" /> </td>
 					</tr>
 				</table>
 				<table style="width:75%;border-collapse:collapse">
 					<tr>
-						<td style="border: 1px solid black;width:19.5%;border-top: none">School, Centre or Area</td>
-						<td style="border: 1px solid black;width:70%;border-top: none"> <input name="Q4input03" type="text" value="<?php if (isset($PQ4input03))echo $PQ4input03; ?>" size="75" maxlength="50" /> </td>
+						<td style="border: 1px solid black;width:19.5%;border-top: none"><label class="normal" id="Q4input03L"><span class="red">*</span></label>School, Centre or Area</td>
+						<td style="border: 1px solid black;width:70%;border-top: none"> <input name="Q4input03" type="text" id="Q4input03" onBlur="Q4input03UD();" value="<?php if (isset($PQ4input03))echo $PQ4input03; ?>" size="75" maxlength="50" /> </td>
 					</tr>
 				</table>
 				<table style="width:75%;border-collapse:collapse">
 					<tr>
-						<td style="border: 1px solid black;width:22.5%;border-top: none">Telephone <small>Include area code (no brackets or spaces)</small></td>
-						<td style="border: 1px solid black;width:25%;border-top: none"> <input name="Q4input04" type="text" value="<?php if (isset($PQ4input04))echo $PQ4input04; ?>" size="30" maxlength="10"/> </td>
-						<td style="border: 1px solid black;width:12.5%;border-top: none">Email</td>
-						<td style="border: 1px solid black;width:40%;border-top: none"> <input name="Q4input05" type="text" value="<?php if (isset($PQ4input05))echo $PQ4input05; ?>" size="30" maxlength="60"/> </td>
+						<td style="border: 1px solid black;width:22.5%;border-top: none"><label class="normal" id="Q4input04L"><span class="red">*</span></label>Telephone <small>Include area code (no brackets or spaces)</small></td>
+						<td style="border: 1px solid black;width:25%;border-top: none"> <input name="Q4input04" type="text" id="Q4input04" onBlur="Q4input04UD();" value="<?php if (isset($PQ4input04))echo $PQ4input04; ?>" size="30" maxlength="10"/> </td>
+						<td style="border: 1px solid black;width:12.5%;border-top: none"><label class="normal" id="Q4input05L"><span class="red">*</span></label>Email</td>
+						<td style="border: 1px solid black;width:40%;border-top: none"> <input name="Q4input05" type="text" id="Q4input05" onBlur="Q4input05UD();" value="<?php if (isset($PQ4input05))echo $PQ4input05; ?>" size="30" maxlength="60"/> </td>
 					</tr>
 				</table>
 				<table style="width:75%;border-collapse:collapse">
 					<tr>
 						<td style="border: 1px solid black;width:70%;border-top: none">SOL Research Integrity Professional Development Program training complete (Note: this is a requirement of approval. See section 6.)</td>
-						<td style="border: 1px solid black;width:30%;border-top: none"> <input name="Q4input06" type="checkbox" size="30" <?php if (isset($PQ4input06) && $PQ4input06=="Yes") echo "checked";?> value="Yes"> Yes-certificate attatched</input> </td>
+						<td style="border: 1px solid black;width:30%;border-top: none"><label class="normal" id="Q4input06L"><span class="red">*</span></label> <input name="Q4input06" id="Q4input06" type="checkbox" onClick="Q4input06UD();" size="30" <?php if (isset($PQ4input06) && $PQ4input06=="Yes") echo "checked";?> value="Yes"> Yes-certificate attatched</input> </td>
 					</tr>
 				</table>
                 <br />
@@ -1865,8 +1872,8 @@
                               <option value="stud" <?php if (isset($PQ5select01) && $PQ5select01 == "stud"){echo "selected=\"selected\"";} ?>>Student</option>
                             </select>
                         </td>
-						<td style="border:1px solid black"> <input name="Q5input04" type="radio" <?php if (isset($PQ5input04) && $PQ5input04=="Yes") echo "checked";?> value="Yes" /> </td>
-						<td style="border:1px solid black"> <input name="Q5input05" type="radio" <?php if (isset($PQ5input05) && $PQ5input05=="Yes") echo "checked";?> value="Yes" /> </td>
+						<td style="border:1px solid black"> <input name="Q5input04" type="checkbox" <?php if (isset($PQ5input04) && $PQ5input04=="Yes") echo "checked";?> value="Yes" /> </td>
+						<td style="border:1px solid black"> <input name="Q5input05" type="checkbox" <?php if (isset($PQ5input05) && $PQ5input05=="Yes") echo "checked";?> value="Yes" /> </td>
 					</tr>
 					<tr>
                         <td style="border:1px solid black"> <input name="Q5input06" type="text" value="<?php if (isset($PQinput06)) echo $PQ5input06; ?>" maxlength="30" /> </td>
@@ -1880,8 +1887,8 @@
                               <option value="stud" <?php if(isset($PQ5select02) && $PQ5select02 == "stud"){echo "selected=\"selected\"";} ?>>Student</option>
                             </select>
                         </td>
-						<td style="border:1px solid black"> <input name="Q5input09" type="radio" <?php if (isset($PQ5input09) && $PQ5input09=="Yes") echo "checked";?> value="Yes" /> </td>
-						<td style="border:1px solid black"> <input name="Q5input10" type="radio" <?php if (isset($PQ5input10) && $PQ5input10=="Yes") echo "checked";?> value="Yes" /> </td>
+						<td style="border:1px solid black"> <input name="Q5input09" type="checkbox" <?php if (isset($PQ5input09) && $PQ5input09=="Yes") echo "checked";?> value="Yes" /> </td>
+						<td style="border:1px solid black"> <input name="Q5input10" type="checkbox" <?php if (isset($PQ5input10) && $PQ5input10=="Yes") echo "checked";?> value="Yes" /> </td>
 					</tr>
 					<tr>
                         <td style="border:1px solid black"> <input name="Q5input11" type="text" value="<?php if (isset($PQ5input11)) echo $PQ5input11; ?>" maxlength="30" /> </td>
@@ -1895,8 +1902,8 @@
                               <option value="stud" <?php if(isset($PQ5select03) && $PQ5select03 == "stud"){echo "selected=\"selected\"";} ?>>Student</option>
                             </select>
                         </td>
-                        <td style="border:1px solid black"> <input name="Q5input14" type="radio" <?php if (isset($PQ5input14) && $PQ5input14=="Yes") echo "checked";?> value="Yes" /> </td>
-                        <td style="border:1px solid black"> <input name="Q5input15" type="radio" <?php if (isset($PQ5input15) && $PQ5input15=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input14" type="checkbox" <?php if (isset($PQ5input14) && $PQ5input14=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input15" type="checkbox" <?php if (isset($PQ5input15) && $PQ5input15=="Yes") echo "checked";?> value="Yes" /> </td>
 					</tr>
 					<tr>
                         <td style="border:1px solid black"> <input name="Q5input16" type="text" value="<?php if (isset($PQ5input16))echo $PQ5input16; ?>" maxlength="30" /> </td>
@@ -1910,8 +1917,8 @@
                               <option value="stud" <?php if(isset($PQ5select04) && $PQ5select04 == "stud"){echo "selected=\"selected\"";} ?>>Student</option>
                             </select>
                         </td>
-                        <td style="border:1px solid black"> <input name="Q5input19" type="radio" <?php if (isset($PQ5input19) && $PQ5input19=="Yes") echo "checked";?> value="Yes" /> </td>
-                        <td style="border:1px solid black"> <input name="Q5input20" type="radio" <?php if (isset($PQ5input20) && $PQ5input20=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input19" type="checkbox" <?php if (isset($PQ5input19) && $PQ5input19=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input20" type="checkbox" <?php if (isset($PQ5input20) && $PQ5input20=="Yes") echo "checked";?> value="Yes" /> </td>
 					</tr>
 					<tr>
                         <td style="border:1px solid black"> <input name="Q5input21" type="text" value="<?php if (isset($PQ5input21)) echo $PQ5input21; ?>" maxlength="30" /> </td>
@@ -1925,8 +1932,8 @@
                               <option value="stud" <?php if(isset($PQ5select05) && $PQ5select05 == "stud"){echo "selected=\"selected\"";} ?>>Student</option>
                             </select>
                         </td>
-                        <td style="border:1px solid black"> <input name="Q5input24" type="radio" <?php if (isset($PQ5input24) && $PQ5input24=="Yes") echo "checked";?> value="Yes" /> </td>
-                        <td style="border:1px solid black"> <input name="Q5input25" type="radio" <?php if (isset($PQ5input25) && $PQ5input25=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input24" type="checkbox" <?php if (isset($PQ5input24) && $PQ5input24=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input25" type="checkbox" <?php if (isset($PQ5input25) && $PQ5input25=="Yes") echo "checked";?> value="Yes" /> </td>
 					</tr>
 					<tr>
                         <td style="border:1px solid black"> <input name="Q5input26" type="text" value="<?php if (isset($PQ5input26)) echo $PQ5input26; ?>" maxlength="30" /> </td>
@@ -1940,8 +1947,8 @@
                               <option value="stud" <?php if(isset($PQ5select06) && $PQ5select06 == "stud"){echo "selected=\"selected\"";} ?>>Student</option>
                             </select>
                         </td>
-                        <td style="border:1px solid black"> <input name="Q5input29" type="radio" <?php if (isset($PQ5input29) && $PQ5input29=="Yes") echo "checked";?> value="Yes" /> </td>
-                        <td style="border:1px solid black"> <input name="Q5input30" type="radio" <?php if (isset($PQ5input30) && $PQ5input30=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input29" type="checkbox" <?php if (isset($PQ5input29) && $PQ5input29=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input30" type="checkbox" <?php if (isset($PQ5input30) && $PQ5input30=="Yes") echo "checked";?> value="Yes" /> </td>
 					</tr>
 				</table>
                 <br />
@@ -1954,30 +1961,30 @@
 				</table>
 				<table style="width: 75%;border-collapse:collapse">
 					<tr>
-						<td style="border: 1px solid black;border-top:none;width:5.9%"> <input name="Q6input01" type="checkbox" <?php if (isset($PQ6input01) && $PQ6input01=="Yes") echo "checked";?> value="Yes" /> </td>
+						<td style="border: 1px solid black;border-top:none;width:5.9%"> <input name="Q6input01" type="checkbox" onClick="Q6input01UD();" <?php if (isset($PQ6input01) && $PQ6input01=="Yes") echo "checked";?> value="Yes" /> </td>
 						<td style="border: 1px solid black;border-top:none;width:93.9%">Use Principle Investigators details.</td>
 					</tr>
 				</table>
 				<table style="width: 75%;border-collapse:collapse">
 					<tr>
-						<td style="border: 1px solid black;border-top:none;width:20%">Name (include title)</td>
-						<td style="border: 1px solid black;border-top:none;width:30%"> <input name="Q6input02" type="text" value="<?php if (isset($PQ6input02))echo $PQ6input02; ?>" maxlength="30" /></td>
-						<td style="border: 1px solid black;border-top:none;width:20%">Staff ID</td>
-						<td style="border: 1px solid black;border-top:none;width:30%"> <input name="Q6input03" type="text" value="<?php if (isset($PQ6input03))echo $PQ6input03; ?>" maxlength="10" /></td>
+						<td style="border: 1px solid black;border-top:none;width:20%"><label class="normal" id="Q6input02L"><span class="red">*</span></label>Name (include title)</td>
+						<td style="border: 1px solid black;border-top:none;width:30%"> <input name="Q6input02" type="text" id="Q6input02" onBlur="Q6input02UD();" value="<?php if (isset($PQ6input02))echo $PQ6input02; ?>" maxlength="30" /></td>
+						<td style="border: 1px solid black;border-top:none;width:20%"><label class="normal" id="Q6input03L"><span class="red">*</span></label>Staff ID</td>
+						<td style="border: 1px solid black;border-top:none;width:30%"> <input name="Q6input03" type="text" id="Q6input03" onBlur="Q6input03UD();" value="<?php if (isset($PQ6input03))echo $PQ6input03; ?>" maxlength="10" /></td>
 					</tr>
 				</table>
 				<table style="width: 75%;border-collapse:collapse">
 					<tr>
-						<td style="border: 1px solid black;border-top:none;width:20%">School, Centre or Area</td>
-						<td style="border: 1px solid black;border-top:none;width:80%"> <input name="Q6input04" type="text" value="<?php if (isset($PQ6input04))echo $PQ6input04; ?>" size="80" maxlength="50" /></td>
+						<td style="border: 1px solid black;border-top:none;width:20%"><label class="normal" id="Q6input04L"><span class="red">*</span></label>School, Centre or Area</td>
+						<td style="border: 1px solid black;border-top:none;width:80%"> <input name="Q6input04" type="text" id="Q6input04" onBlur="Q6input04UD();" value="<?php if (isset($PQ6input04))echo $PQ6input04; ?>" size="80" maxlength="50" /></td>
 					</tr>
 				</table>
 				<table style="width: 75%;border-collapse:collapse">
 					<tr>
-						<td style="border: 1px solid black;border-top:none;width:20%">Telephone <small>Include area code (no brackets or spaces)</small></td>
-						<td style="border: 1px solid black;border-top:none;width:20%"> <input name="Q6input05" type="text" value="<?php if (isset($PQ6input05))echo $PQ6input05; ?>" maxlength="10" /></td>
-						<td style="border: 1px solid black;border-top:none;width:8%">Email</td>
-						<td style="border: 1px solid black;border-top:none;width:51%"> <input name="Q6input06" type="text" value="<?php if (isset($PQ6input06))echo $PQ6input06; ?>" size="50" maxlength="60" /></td>
+						<td style="border: 1px solid black;border-top:none;width:20%"><label class="normal" id="Q6input05L"><span class="red">*</span></label>Telephone <small>Include area code (no brackets or spaces)</small></td>
+						<td style="border: 1px solid black;border-top:none;width:20%"> <input name="Q6input05" type="text" id="Q6input05" onBlur="Q6input05UD();" value="<?php if (isset($PQ6input05))echo $PQ6input05; ?>" maxlength="10" /></td>
+						<td style="border: 1px solid black;border-top:none;width:8%"><label class="normal" id="Q6input06L"><span class="red">*</span></label>Email</td>
+						<td style="border: 1px solid black;border-top:none;width:51%"> <input name="Q6input06" type="text" id="Q6input06" onBlur="Q6input06UD();" value="<?php if (isset($PQ6input06))echo $PQ6input06; ?>" size="50" maxlength="60" /></td>
 					</tr>
 				</table>
 				<br />
@@ -1996,7 +2003,7 @@
             <br />
             <table id="sectionsub">
                 <tr>
-                    <th id="leftcol">7</th>
+                    <th id="leftcol"><label class="normal" id="Q7input01L"><span class="red">*</span></label>7</th>
                     <th id="rightcol">Potential harm or risk to participants</th>
                 </tr>
             </table>
@@ -2011,12 +2018,12 @@
                 <li>For psychological based studies risks may be psychological stress due to the assessment;  there may be a potential for increased risk of suicidality or self-harm; there may be a potential for worsening of psychological disorder etc.</li>
             </ul>
             </i>
-            <textarea name="Q7input01" cols="205" rows="7"><?php if (isset($PQ7input01))echo $PQ7input01; ?></textarea>
+            <textarea name="Q7input01" id="Q7input01" onBlur="Q7input01UD();" cols="205" rows="7"><?php if (isset($PQ7input01))echo $PQ7input01; ?></textarea>
             <br />
             <br />
 			<table id="sectionsub">
                 <tr>
-                    <th id="leftcol">8</th>
+                    <th id="leftcol"><label class="normal" id="Q8input01L"><span class="red">*</span></label>8</th>
                     <th id="rightcol">Risk management strategy</th>
                 </tr>
             </table>
@@ -2024,12 +2031,12 @@
             Please also outline your plan of action for unexpected adverse events. The Human Research Ethics Office will use this information and follow this procedure 
             should an event or complaint occur. Please refer to Adverse Event Guidelines for more information.</i></p>
             <br />
-            <textarea name="Q8input01" cols="205" rows="7"><?php if (isset($PQ8input01))echo $PQ8input01; ?></textarea>
+            <textarea name="Q8input01" id="Q8input01" onBlur="Q8input01UD();" cols="205" rows="7"><?php if (isset($PQ8input01))echo $PQ8input01; ?></textarea>
             <br />
 			<br />
 			<table id = "sectionsub">
                 <tr>
-                    <th id="leftcol">9</th>
+                    <th id="leftcol"><label class="normal" id="Q9input01L"><span class="red">*</span></label>9</th>
                     <th id ="rightcol">Will participants be given financial or non-financial incentives?</th>
                 </tr>
             </table>
@@ -2037,23 +2044,23 @@
             	<tr>
             		<td>
             			<div id="formCheckBox">
-            				<input type="radio" name="Q9input01" <?php if (isset($PQ9input01) && $PQ9input01=="No") echo "checked";?> value="No" id="Q9input01_no" />No
+            				<input type="radio" name="Q9input01" onClick="Q9input01UD();" <?php if (isset($PQ9input01) && $PQ9input01=="No") echo "checked";?> value="No" id="Q9input01_no" />No
             			</div>
             		</td>
             	</tr>
             	<tr>
             		<td>
                         <div id="formCheckBox">
-                            <input type="radio" name="Q9input01" <?php if (isset($PQ9input01) && $PQ9input01=="Yes") echo "checked";?> value="Yes" id="Q9input01_yes" />Yes
+                            <input type="radio" name="Q9input01" onClick="Q9input01UD();" <?php if (isset($PQ9input01) && $PQ9input01=="Yes") echo "checked";?> value="Yes" id="Q9input01_yes" />Yes
                         </div>
                     </td>
                 </tr>
             </table>
-            <p><i>If yes, please provide details below. If a prize is used please indicate the prize and the chances of winning this prize in the space below 
+            <p><i><label class="normal" id="Q9input02L"><span class="red">*</span></label>If yes, please provide details below. If a prize is used please indicate the prize and the chances of winning this prize in the space below 
             and in the Participant Information Statement. Please refer to the <a href="http://legal.curtin.edu.au/comps/" target="_blank">Competitions Toolkit</a> for further guidance on prizes. Details of the 
             incentives should not be detailed on the recruitment material; however this information may be included in the Participants Information 
             Statement.</i></p>
-            <textarea name="Q9input02" cols="205" rows="7"><?php if (isset($PQ9input02))echo $PQ9input02; ?></textarea>
+            <textarea name="Q9input02" id="Q9input02" onBlur="Q9input02UD();" disabled="disabled" cols="205" rows="7"><?php if (isset($PQ9input02))echo $PQ9input02; ?></textarea>
             <br />
 			<br />
 			<table id = "sectionsub">
@@ -2174,19 +2181,19 @@
 			<br />
 			<table id = "sectionsub">
                 <tr>
-                    <th id="leftcol">12</th>
+                    <th id="leftcol"><label class="normal" id="Q12input01L"><span class="red">*</span></label>12</th>
                     <th id ="rightcol">Does the research use deception, concealment, incomplete disclosure, limited disclosure, an opt-out approach, or use of information, samples, health information etc., without the specified consent from those persons? (<a href="https://www.nhmrc.gov.au/book/national-statement-ethical-conduct-human-research-2007-updated-december-2013/chapter-2-3-qualif" target="_blank">NS 2.3</a>)</th>
                 </tr>
                 <table width = 800>
                     <tr>
                         <td>
                             <div id="formCheckBox">
-                            	<input type="radio" name="Q12input01" <?php if (isset($PQ12input01) && $PQ12input01=="No") echo "checked";?> value="No" id="Q12input01_no" />No
+                            	<input type="radio" name="Q12input01" <?php if (isset($PQ12input01) && $PQ12input01=="No") echo "checked";?> value="No" onClick="Q12input01UD();" id="Q12input01_no" />No
                             </div>
                         </td>
                         <td>
                         	<div id="formCheckBox">
-                        		<input type="radio" name="Q12input01" <?php if (isset($PQ12input01) && $PQ12input01=="Yes") echo "checked";?> value="Yes" id="Q12input01_yes" />Yes
+                        		<input type="radio" name="Q12input01" <?php if (isset($PQ12input01) && $PQ12input01=="Yes") echo "checked";?> value="Yes" onClick="Q12input01UD();" id="Q12input01_yes" />Yes
                         	</div>
                         </td>
                     </tr>
