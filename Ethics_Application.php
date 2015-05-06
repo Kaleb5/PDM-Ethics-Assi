@@ -193,7 +193,14 @@
 	}
 	else
 	{
-		$PQ2input01 = test_input($_POST['Q2input01']);
+		if($PQ2select01 != "other")
+		{
+			$PQ2input01 = test_input($_POST['Q2input01']);
+		}
+		else
+		{
+			$PQ2input01 = NULL;
+		}
 	}
 	
 	if (empty($_POST['Q3textarea01']))
@@ -1711,7 +1718,7 @@
       </tr>
     </table>
     <p><br /><label class="normal" id="TriageJustL"><span class="red">*</span></label>A "yes" response to any of the above questions would normally indicate your project is not eligible for a Low or Negligible Risk review. However, a "Yes" answer does not necessarily, automatically, preclude the research from being reviewed through a low risk review process. If you answered "yes" to any of the above questions and you think your study should be reviewed through the low risk process please justify why in the space below.</p>
-    <textarea name="TriageJustify" cols="205" rows="7" onChange="triageJustUD();"><?php if (isset($TriageJust)) echo $TriageJust; else echo "";?></textarea>
+    <textarea name="TriageJustify" cols="205" rows="7" id="TriageJustify" onchange="triageJustUD();" disabled="disabled"><?php if (isset($TriageJust)) echo $TriageJust; else echo "";?></textarea>
     </div>
             <div class="TabbedPanelsContent"> <!-- Section 1 -->
 				<table id="section">
@@ -1722,24 +1729,24 @@
 				<br />
 				<table id="sectionsub">
 					<tr>
-						<th id="leftcol">1</th>
-						<th id="rightcol"><label class="normal" id="Q1input01L"><span class="red">*</span></label>Project Title</th>
+						<th id="leftcol"><label class="normal" id="Q1input01L"><span class="red">*</span></label>1</th>
+						<th id="rightcol">Project Title</th>
 					</tr>
 				</table>
-				<input name="Q1input01" onBlur="Q1input01UD();" maxlength="30" style="border: 1px solid black" type="text" size="118" value="<?php echo ""; if (isset($PQ1input01)) echo $PQ1input01; ?>" />
+				<input name="Q1input01" onBlur="Q1input01UD();" maxlength="30" style="border: 1px solid black" type="text" size="118" id ="Q1input01" value="<?php echo ""; if (isset($PQ1input01)) echo $PQ1input01; ?>" />
                 <br />
 				<br />
 				<table id="sectionsub">
 					<tr>
-						<th id="leftcol">2</th>
-						<th id="rightcol"><label class="normal" id="Q2select01L"><span class="red">*</span></label>Please indicate the type of project</th>
+						<th id="leftcol"><label class="normal" id="Q2select01L"><span class="red">*</span></label>2</th>
+						<th id="rightcol">Please indicate the type of project</th>
 					</tr>
 				</table>
 				<br />
 				<table id="projecttypetable">
 					<tr>
 						<td id="projecttype1">
-						<select name="Q2select01">
+						<select name="Q2select01" id="Q2select01" onChange="Q2select01UD();">
 						  <option value="choose" <?php if(isset($PQ2select01) && $PQ2select01 == "choose") {echo "selected=\"selected\"";} ?>>Please Choose</option>
 						  <option value="stfPrj" <?php if(isset($PQ2select01) && $PQ2select01 == "stfPrj") {echo "selected=\"selected\"";} ?>>Staff Project</option>
 						  <option value="ugrad" <?php if(isset($PQ2select01) && $PQ2select01 == "ugrad") {echo "selected=\"selected\"";} ?>>Undergraduate other than honours (no candidacy required)</option>
@@ -1750,7 +1757,7 @@
 						  <option value="other" <?php if(isset($PQ2select01) && $PQ2select01 == "other") {echo "selected=\"selected\"";} ?>>Other (specify)</option>
                         </select>
 						</td>
-						<td id="projecttype3" ><label class="normal" id="Q2input01L"><span class="red">*</span></label><input name="Q2input01" type="text" id="styled" value="<?php if(isset($PQ2input01)) {echo $PQ2input01;} else {echo "Other";} ?>" size="40" maxlength="40" /></td>
+						<td id="projecttype3" ><label class="normal" id="Q2input01L"><span class="red">*</span></label><input name="Q2input01" type="text" id="Q2input01" onBlur="Q2input01UD();" value="<?php if(isset($PQ2input01)) {echo $PQ2input01;} else {echo "Other";} ?>" size="40" maxlength="40" disabled="disabled" /></td>
 					</tr>
 				</table>
                 <br />
@@ -1767,33 +1774,33 @@
 				<br />
 				<table id="sectionsub">
 					<tr>
-						<th id="leftcol">3a</th>
+						<th id="leftcol"><label class="normal" id="Q3textarea01L"><span class="red">*</span></label>3a</th>
 						<th id="rightcol">Background
 						<br />
 						<p style="margin-left:-8px"><i>(No more than 200 words).</i></p>
 						</th>
 					</tr>
 				</table>
-				<textarea name="Q3textarea01" maxlength="900" rows="10" cols="116"><?php if (isset($PQ3textarea01))echo $PQ3textarea01; ?></textarea>
+				<textarea name="Q3textarea01" maxlength="900" rows="10" cols="116" onBlur="Q3textarea01UD();" id="Q3textarea01"><?php if (isset($PQ3textarea01))echo $PQ3textarea01; ?></textarea>
 				<br /><br />
 				<table id="sectionsub">
 					<tr>
-						<th id="leftcol">3b</th>
+						<th id="leftcol"><label class="normal" id="Q3textarea02L"><span class="red">*</span></label>3b</th>
 						<th id="rightcol">Aims and hypothesis</th>
 					</tr>
 				</table>
-				<textarea name="Q3textarea02" maxlength="900" rows="4" cols="116"><?php if (isset($PQ3textarea02))echo $PQ3textarea02; ?></textarea>
+				<textarea name="Q3textarea02" maxlength="900" rows="4" cols="116" onBlur="Q3textarea02UD();" id="Q3textarea02"><?php if (isset($PQ3textarea02))echo $PQ3textarea02; ?></textarea>
 				<br /><br />
 				<table id="sectionsub">
 					<tr>
-						<th id="leftcol">3c</th>
-						<th id="rightcol">Background
+						<th id="leftcol"><label class="normal" id="Q3textarea03L"><span class="red">*</span></label>3c</th>
+						<th id="rightcol">Methods
 						<br />
 						<p style="margin-left:-8px"><i>(No more than 200 words).</i></p>
 						</th>
 					</tr>
 				</table>
-				<textarea name="Q3textarea03" maxlength="900" rows="16" cols="116"><?php if (isset($PQ3textarea03))echo $PQ3textarea03; ?></textarea>
+				<textarea name="Q3textarea03" maxlength="900" rows="16" cols="116" onBlur="Q3textarea03UD();" id="Q3textarea03"><?php if (isset($PQ3textarea03))echo $PQ3textarea03; ?></textarea>
                 <br />
 				<br />
 				<table id="sectionsub">
@@ -1807,30 +1814,30 @@
 				</table>
 				<table style="width: 75%;border-collapse:collapse">
 					<tr>
-						<td style="background-color: #E8E8E8;border: 1px solid black;border-top: none;width: 10px">Name (include title)</td>
-						<td style="border: 1px solid black;width: 35%;border-top: none"> <input name="Q4input01" type="text" value="<?php if (isset($PQ4input01))echo $PQ4input01; ?>" size="30" maxlength="30" /> </td>
-						<td style="border: 1px solid black;width: 25%;border-top: none">Staff ID</td>
-						<td style="border: 1px solid black;width: 15%;border-top: none"> <input name="Q4input02" type="text" value="<?php if (isset($PQ4input02))echo $PQ4input02; ?>" maxlength="10" /> </td>
+						<td style="border: 1px solid black;border-top: none"><label class="normal" id="Q4input01L"><span class="red">*</span></label>Name (include title)</td>
+						<td style="border: 1px solid black;width: 35%;border-top: none"> <input name="Q4input01" type="text" id="Q4input01" onBlur="Q4input01UD();" value="<?php if (isset($PQ4input01))echo $PQ4input01; ?>" size="30" maxlength="30" /> </td>
+						<td style="border: 1px solid black;width: 25%;border-top: none"><label class="normal" id="Q4input02L"><span class="red">*</span></label>Staff ID</td>
+						<td style="border: 1px solid black;width: 15%;border-top: none"> <input name="Q4input02" type="text" id="Q4input02" onBlur="Q4input02UD();" value="<?php if (isset($PQ4input02))echo $PQ4input02; ?>" maxlength="10" /> </td>
 					</tr>
 				</table>
 				<table style="width:75%;border-collapse:collapse">
 					<tr>
-						<td style="border: 1px solid black;width:19.5%;border-top: none">School, Centre or Area</td>
-						<td style="border: 1px solid black;width:70%;border-top: none"> <input name="Q4input03" type="text" value="<?php if (isset($PQ4input03))echo $PQ4input03; ?>" size="75" maxlength="50" /> </td>
+						<td style="border: 1px solid black;width:19.5%;border-top: none"><label class="normal" id="Q4input03L"><span class="red">*</span></label>School, Centre or Area</td>
+						<td style="border: 1px solid black;width:70%;border-top: none"> <input name="Q4input03" type="text" id="Q4input03" onBlur="Q4input03UD();" value="<?php if (isset($PQ4input03))echo $PQ4input03; ?>" size="75" maxlength="50" /> </td>
 					</tr>
 				</table>
 				<table style="width:75%;border-collapse:collapse">
 					<tr>
-						<td style="border: 1px solid black;width:22.5%;border-top: none">Telephone <small>Include area code (no brackets or spaces)</small></td>
-						<td style="border: 1px solid black;width:25%;border-top: none"> <input name="Q4input04" type="text" value="<?php if (isset($PQ4input04))echo $PQ4input04; ?>" size="30" maxlength="10"/> </td>
-						<td style="border: 1px solid black;width:12.5%;border-top: none">Email</td>
-						<td style="border: 1px solid black;width:40%;border-top: none"> <input name="Q4input05" type="text" value="<?php if (isset($PQ4input05))echo $PQ4input05; ?>" size="30" maxlength="60"/> </td>
+						<td style="border: 1px solid black;width:22.5%;border-top: none"><label class="normal" id="Q4input04L"><span class="red">*</span></label>Telephone <small>Include area code (no brackets or spaces)</small></td>
+						<td style="border: 1px solid black;width:25%;border-top: none"> <input name="Q4input04" type="text" id="Q4input04" onBlur="Q4input04UD();" value="<?php if (isset($PQ4input04))echo $PQ4input04; ?>" size="30" maxlength="10"/> </td>
+						<td style="border: 1px solid black;width:12.5%;border-top: none"><label class="normal" id="Q4input05L"><span class="red">*</span></label>Email</td>
+						<td style="border: 1px solid black;width:40%;border-top: none"> <input name="Q4input05" type="text" id="Q4input05" onBlur="Q4input05UD();" value="<?php if (isset($PQ4input05))echo $PQ4input05; ?>" size="30" maxlength="60"/> </td>
 					</tr>
 				</table>
 				<table style="width:75%;border-collapse:collapse">
 					<tr>
 						<td style="border: 1px solid black;width:70%;border-top: none">SOL Research Integrity Professional Development Program training complete (Note: this is a requirement of approval. See section 6.)</td>
-						<td style="border: 1px solid black;width:30%;border-top: none"> <input name="Q4input06" type="checkbox" size="30" <?php if (isset($PQ4input06) && $PQ4input06=="Yes") echo "checked";?> value="Yes"> Yes-certificate attatched</input> </td>
+						<td style="border: 1px solid black;width:30%;border-top: none"><label class="normal" id="Q4input06L"><span class="red">*</span></label> <input name="Q4input06" id="Q4input06" type="checkbox" onClick="Q4input06UD();" size="30" <?php if (isset($PQ4input06) && $PQ4input06=="Yes") echo "checked";?> value="Yes"> Yes-certificate attatched</input> </td>
 					</tr>
 				</table>
                 <br />
@@ -1865,8 +1872,8 @@
                               <option value="stud" <?php if (isset($PQ5select01) && $PQ5select01 == "stud"){echo "selected=\"selected\"";} ?>>Student</option>
                             </select>
                         </td>
-						<td style="border:1px solid black"> <input name="Q5input04" type="radio" <?php if (isset($PQ5input04) && $PQ5input04=="Yes") echo "checked";?> value="Yes" /> </td>
-						<td style="border:1px solid black"> <input name="Q5input05" type="radio" <?php if (isset($PQ5input05) && $PQ5input05=="Yes") echo "checked";?> value="Yes" /> </td>
+						<td style="border:1px solid black"> <input name="Q5input04" type="checkbox" <?php if (isset($PQ5input04) && $PQ5input04=="Yes") echo "checked";?> value="Yes" /> </td>
+						<td style="border:1px solid black"> <input name="Q5input05" type="checkbox" <?php if (isset($PQ5input05) && $PQ5input05=="Yes") echo "checked";?> value="Yes" /> </td>
 					</tr>
 					<tr>
                         <td style="border:1px solid black"> <input name="Q5input06" type="text" value="<?php if (isset($PQinput06)) echo $PQ5input06; ?>" maxlength="30" /> </td>
@@ -1880,8 +1887,8 @@
                               <option value="stud" <?php if(isset($PQ5select02) && $PQ5select02 == "stud"){echo "selected=\"selected\"";} ?>>Student</option>
                             </select>
                         </td>
-						<td style="border:1px solid black"> <input name="Q5input09" type="radio" <?php if (isset($PQ5input09) && $PQ5input09=="Yes") echo "checked";?> value="Yes" /> </td>
-						<td style="border:1px solid black"> <input name="Q5input10" type="radio" <?php if (isset($PQ5input10) && $PQ5input10=="Yes") echo "checked";?> value="Yes" /> </td>
+						<td style="border:1px solid black"> <input name="Q5input09" type="checkbox" <?php if (isset($PQ5input09) && $PQ5input09=="Yes") echo "checked";?> value="Yes" /> </td>
+						<td style="border:1px solid black"> <input name="Q5input10" type="checkbox" <?php if (isset($PQ5input10) && $PQ5input10=="Yes") echo "checked";?> value="Yes" /> </td>
 					</tr>
 					<tr>
                         <td style="border:1px solid black"> <input name="Q5input11" type="text" value="<?php if (isset($PQ5input11)) echo $PQ5input11; ?>" maxlength="30" /> </td>
@@ -1895,8 +1902,8 @@
                               <option value="stud" <?php if(isset($PQ5select03) && $PQ5select03 == "stud"){echo "selected=\"selected\"";} ?>>Student</option>
                             </select>
                         </td>
-                        <td style="border:1px solid black"> <input name="Q5input14" type="radio" <?php if (isset($PQ5input14) && $PQ5input14=="Yes") echo "checked";?> value="Yes" /> </td>
-                        <td style="border:1px solid black"> <input name="Q5input15" type="radio" <?php if (isset($PQ5input15) && $PQ5input15=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input14" type="checkbox" <?php if (isset($PQ5input14) && $PQ5input14=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input15" type="checkbox" <?php if (isset($PQ5input15) && $PQ5input15=="Yes") echo "checked";?> value="Yes" /> </td>
 					</tr>
 					<tr>
                         <td style="border:1px solid black"> <input name="Q5input16" type="text" value="<?php if (isset($PQ5input16))echo $PQ5input16; ?>" maxlength="30" /> </td>
@@ -1910,8 +1917,8 @@
                               <option value="stud" <?php if(isset($PQ5select04) && $PQ5select04 == "stud"){echo "selected=\"selected\"";} ?>>Student</option>
                             </select>
                         </td>
-                        <td style="border:1px solid black"> <input name="Q5input19" type="radio" <?php if (isset($PQ5input19) && $PQ5input19=="Yes") echo "checked";?> value="Yes" /> </td>
-                        <td style="border:1px solid black"> <input name="Q5input20" type="radio" <?php if (isset($PQ5input20) && $PQ5input20=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input19" type="checkbox" <?php if (isset($PQ5input19) && $PQ5input19=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input20" type="checkbox" <?php if (isset($PQ5input20) && $PQ5input20=="Yes") echo "checked";?> value="Yes" /> </td>
 					</tr>
 					<tr>
                         <td style="border:1px solid black"> <input name="Q5input21" type="text" value="<?php if (isset($PQ5input21)) echo $PQ5input21; ?>" maxlength="30" /> </td>
@@ -1925,8 +1932,8 @@
                               <option value="stud" <?php if(isset($PQ5select05) && $PQ5select05 == "stud"){echo "selected=\"selected\"";} ?>>Student</option>
                             </select>
                         </td>
-                        <td style="border:1px solid black"> <input name="Q5input24" type="radio" <?php if (isset($PQ5input24) && $PQ5input24=="Yes") echo "checked";?> value="Yes" /> </td>
-                        <td style="border:1px solid black"> <input name="Q5input25" type="radio" <?php if (isset($PQ5input25) && $PQ5input25=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input24" type="checkbox" <?php if (isset($PQ5input24) && $PQ5input24=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input25" type="checkbox" <?php if (isset($PQ5input25) && $PQ5input25=="Yes") echo "checked";?> value="Yes" /> </td>
 					</tr>
 					<tr>
                         <td style="border:1px solid black"> <input name="Q5input26" type="text" value="<?php if (isset($PQ5input26)) echo $PQ5input26; ?>" maxlength="30" /> </td>
@@ -1940,8 +1947,8 @@
                               <option value="stud" <?php if(isset($PQ5select06) && $PQ5select06 == "stud"){echo "selected=\"selected\"";} ?>>Student</option>
                             </select>
                         </td>
-                        <td style="border:1px solid black"> <input name="Q5input29" type="radio" <?php if (isset($PQ5input29) && $PQ5input29=="Yes") echo "checked";?> value="Yes" /> </td>
-                        <td style="border:1px solid black"> <input name="Q5input30" type="radio" <?php if (isset($PQ5input30) && $PQ5input30=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input29" type="checkbox" <?php if (isset($PQ5input29) && $PQ5input29=="Yes") echo "checked";?> value="Yes" /> </td>
+                        <td style="border:1px solid black"> <input name="Q5input30" type="checkbox" <?php if (isset($PQ5input30) && $PQ5input30=="Yes") echo "checked";?> value="Yes" /> </td>
 					</tr>
 				</table>
                 <br />
@@ -1954,30 +1961,30 @@
 				</table>
 				<table style="width: 75%;border-collapse:collapse">
 					<tr>
-						<td style="border: 1px solid black;border-top:none;width:5.9%"> <input name="Q6input01" type="checkbox" <?php if (isset($PQ6input01) && $PQ6input01=="Yes") echo "checked";?> value="Yes" /> </td>
+						<td style="border: 1px solid black;border-top:none;width:5.9%"> <input name="Q6input01" type="checkbox" onClick="Q6input01UD();" <?php if (isset($PQ6input01) && $PQ6input01=="Yes") echo "checked";?> value="Yes" /> </td>
 						<td style="border: 1px solid black;border-top:none;width:93.9%">Use Principle Investigators details.</td>
 					</tr>
 				</table>
 				<table style="width: 75%;border-collapse:collapse">
 					<tr>
-						<td style="border: 1px solid black;border-top:none;width:20%">Name (include title)</td>
-						<td style="border: 1px solid black;border-top:none;width:30%"> <input name="Q6input02" type="text" value="<?php if (isset($PQ6input02))echo $PQ6input02; ?>" maxlength="30" /></td>
-						<td style="border: 1px solid black;border-top:none;width:20%">Staff ID</td>
-						<td style="border: 1px solid black;border-top:none;width:30%"> <input name="Q6input03" type="text" value="<?php if (isset($PQ6input03))echo $PQ6input03; ?>" maxlength="10" /></td>
+						<td style="border: 1px solid black;border-top:none;width:20%"><label class="normal" id="Q6input02L"><span class="red">*</span></label>Name (include title)</td>
+						<td style="border: 1px solid black;border-top:none;width:30%"> <input name="Q6input02" type="text" id="Q6input02" onBlur="Q6input02UD();" value="<?php if (isset($PQ6input02))echo $PQ6input02; ?>" maxlength="30" /></td>
+						<td style="border: 1px solid black;border-top:none;width:20%"><label class="normal" id="Q6input03L"><span class="red">*</span></label>Staff ID</td>
+						<td style="border: 1px solid black;border-top:none;width:30%"> <input name="Q6input03" type="text" id="Q6input03" onBlur="Q6input03UD();" value="<?php if (isset($PQ6input03))echo $PQ6input03; ?>" maxlength="10" /></td>
 					</tr>
 				</table>
 				<table style="width: 75%;border-collapse:collapse">
 					<tr>
-						<td style="border: 1px solid black;border-top:none;width:20%">School, Centre or Area</td>
-						<td style="border: 1px solid black;border-top:none;width:80%"> <input name="Q6input04" type="text" value="<?php if (isset($PQ6input04))echo $PQ6input04; ?>" size="80" maxlength="50" /></td>
+						<td style="border: 1px solid black;border-top:none;width:20%"><label class="normal" id="Q6input04L"><span class="red">*</span></label>School, Centre or Area</td>
+						<td style="border: 1px solid black;border-top:none;width:80%"> <input name="Q6input04" type="text" id="Q6input04" onBlur="Q6input04UD();" value="<?php if (isset($PQ6input04))echo $PQ6input04; ?>" size="80" maxlength="50" /></td>
 					</tr>
 				</table>
 				<table style="width: 75%;border-collapse:collapse">
 					<tr>
-						<td style="border: 1px solid black;border-top:none;width:20%">Telephone <small>Include area code (no brackets or spaces)</small></td>
-						<td style="border: 1px solid black;border-top:none;width:20%"> <input name="Q6input05" type="text" value="<?php if (isset($PQ6input05))echo $PQ6input05; ?>" maxlength="10" /></td>
-						<td style="border: 1px solid black;border-top:none;width:8%">Email</td>
-						<td style="border: 1px solid black;border-top:none;width:51%"> <input name="Q6input06" type="text" value="<?php if (isset($PQ6input06))echo $PQ6input06; ?>" size="50" maxlength="60" /></td>
+						<td style="border: 1px solid black;border-top:none;width:20%"><label class="normal" id="Q6input05L"><span class="red">*</span></label>Telephone <small>Include area code (no brackets or spaces)</small></td>
+						<td style="border: 1px solid black;border-top:none;width:20%"> <input name="Q6input05" type="text" id="Q6input05" onBlur="Q6input05UD();" value="<?php if (isset($PQ6input05))echo $PQ6input05; ?>" maxlength="10" /></td>
+						<td style="border: 1px solid black;border-top:none;width:8%"><label class="normal" id="Q6input06L"><span class="red">*</span></label>Email</td>
+						<td style="border: 1px solid black;border-top:none;width:51%"> <input name="Q6input06" type="text" id="Q6input06" onBlur="Q6input06UD();" value="<?php if (isset($PQ6input06))echo $PQ6input06; ?>" size="50" maxlength="60" /></td>
 					</tr>
 				</table>
 				<br />
@@ -1996,7 +2003,7 @@
             <br />
             <table id="sectionsub">
                 <tr>
-                    <th id="leftcol">7</th>
+                    <th id="leftcol"><label class="normal" id="Q7input01L"><span class="red">*</span></label>7</th>
                     <th id="rightcol">Potential harm or risk to participants</th>
                 </tr>
             </table>
@@ -2011,12 +2018,12 @@
                 <li>For psychological based studies risks may be psychological stress due to the assessment;  there may be a potential for increased risk of suicidality or self-harm; there may be a potential for worsening of psychological disorder etc.</li>
             </ul>
             </i>
-            <textarea name="Q7input01" cols="205" rows="7"><?php if (isset($PQ7input01))echo $PQ7input01; ?></textarea>
+            <textarea name="Q7input01" id="Q7input01" onBlur="Q7input01UD();" cols="205" rows="7"><?php if (isset($PQ7input01))echo $PQ7input01; ?></textarea>
             <br />
             <br />
 			<table id="sectionsub">
                 <tr>
-                    <th id="leftcol">8</th>
+                    <th id="leftcol"><label class="normal" id="Q8input01L"><span class="red">*</span></label>8</th>
                     <th id="rightcol">Risk management strategy</th>
                 </tr>
             </table>
@@ -2024,12 +2031,12 @@
             Please also outline your plan of action for unexpected adverse events. The Human Research Ethics Office will use this information and follow this procedure 
             should an event or complaint occur. Please refer to Adverse Event Guidelines for more information.</i></p>
             <br />
-            <textarea name="Q8input01" cols="205" rows="7"><?php if (isset($PQ8input01))echo $PQ8input01; ?></textarea>
+            <textarea name="Q8input01" id="Q8input01" onBlur="Q8input01UD();" cols="205" rows="7"><?php if (isset($PQ8input01))echo $PQ8input01; ?></textarea>
             <br />
 			<br />
 			<table id = "sectionsub">
                 <tr>
-                    <th id="leftcol">9</th>
+                    <th id="leftcol"><label class="normal" id="Q9input01L"><span class="red">*</span></label>9</th>
                     <th id ="rightcol">Will participants be given financial or non-financial incentives?</th>
                 </tr>
             </table>
@@ -2037,23 +2044,23 @@
             	<tr>
             		<td>
             			<div id="formCheckBox">
-            				<input type="radio" name="Q9input01" <?php if (isset($PQ9input01) && $PQ9input01=="No") echo "checked";?> value="No" id="Q9input01_no" />No
+            				<input type="radio" name="Q9input01" onClick="Q9input01UD();" <?php if (isset($PQ9input01) && $PQ9input01=="No") echo "checked";?> value="No" id="Q9input01_no" />No
             			</div>
             		</td>
             	</tr>
             	<tr>
             		<td>
                         <div id="formCheckBox">
-                            <input type="radio" name="Q9input01" <?php if (isset($PQ9input01) && $PQ9input01=="Yes") echo "checked";?> value="Yes" id="Q9input01_yes" />Yes
+                            <input type="radio" name="Q9input01" onClick="Q9input01UD();" <?php if (isset($PQ9input01) && $PQ9input01=="Yes") echo "checked";?> value="Yes" id="Q9input01_yes" />Yes
                         </div>
                     </td>
                 </tr>
             </table>
-            <p><i>If yes, please provide details below. If a prize is used please indicate the prize and the chances of winning this prize in the space below 
+            <p><i><label class="normal" id="Q9input02L"><span class="red">*</span></label>If yes, please provide details below. If a prize is used please indicate the prize and the chances of winning this prize in the space below 
             and in the Participant Information Statement. Please refer to the <a href="http://legal.curtin.edu.au/comps/" target="_blank">Competitions Toolkit</a> for further guidance on prizes. Details of the 
             incentives should not be detailed on the recruitment material; however this information may be included in the Participants Information 
             Statement.</i></p>
-            <textarea name="Q9input02" cols="205" rows="7"><?php if (isset($PQ9input02))echo $PQ9input02; ?></textarea>
+            <textarea name="Q9input02" id="Q9input02" onBlur="Q9input02UD();" disabled="disabled" cols="205" rows="7"><?php if (isset($PQ9input02))echo $PQ9input02; ?></textarea>
             <br />
 			<br />
 			<table id = "sectionsub">
@@ -2174,19 +2181,19 @@
 			<br />
 			<table id = "sectionsub">
                 <tr>
-                    <th id="leftcol">12</th>
+                    <th id="leftcol"><label class="normal" id="Q12input01L"><span class="red">*</span></label>12</th>
                     <th id ="rightcol">Does the research use deception, concealment, incomplete disclosure, limited disclosure, an opt-out approach, or use of information, samples, health information etc., without the specified consent from those persons? (<a href="https://www.nhmrc.gov.au/book/national-statement-ethical-conduct-human-research-2007-updated-december-2013/chapter-2-3-qualif" target="_blank">NS 2.3</a>)</th>
                 </tr>
                 <table width = 800>
                     <tr>
                         <td>
                             <div id="formCheckBox">
-                            	<input type="radio" name="Q12input01" <?php if (isset($PQ12input01) && $PQ12input01=="No") echo "checked";?> value="No" id="Q12input01_no" />No
+                            	<input type="radio" name="Q12input01" <?php if (isset($PQ12input01) && $PQ12input01=="No") echo "checked";?> value="No" onClick="Q12input01UD();" id="Q12input01_no" />No
                             </div>
                         </td>
                         <td>
                         	<div id="formCheckBox">
-                        		<input type="radio" name="Q12input01" <?php if (isset($PQ12input01) && $PQ12input01=="Yes") echo "checked";?> value="Yes" id="Q12input01_yes" />Yes
+                        		<input type="radio" name="Q12input01" <?php if (isset($PQ12input01) && $PQ12input01=="Yes") echo "checked";?> value="Yes" onClick="Q12input01UD();" id="Q12input01_yes" />Yes
                         	</div>
                         </td>
                     </tr>
@@ -2204,166 +2211,208 @@
                     </td>
                 </tr>
             </table>
-            <br />
+			<!--.............. Section 3: Q13 ..............-->
             <table id = "sectionsub">
                 <tr>
-                    <th id="leftcol">13</th>
+                    <th id="leftcol"><label class="normal" id="Q13input01L"><span class="red">*</span></label>13</th>
                     <th id ="rightcol">Is your study a clinical trial? (<a href="https://www.nhmrc.gov.au/book/chapter-3-3-interventions-and-therapies-including-clinical-and-non-clinical-trials-and" target="_blank">NS 3.3</a>)</th>
                 </tr>
             </table>
-            <p><label class="normal" id="Q13input01L"><span class="red">*</span></label><i>A clinical trial is defined as any research project that prospectively assigns human subjects to intervention and comparison groups to 
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%">
+            <small>A clinical trial is defined as any research project that prospectively assigns human subjects to intervention and comparison groups to 
             study the cause-and-effect relationship between a medical intervention and a health outcome. Medical intervention means any intervention used 
-            to modify a health outcome. This definition includes, drugs, surgical procedures, devices, behavioral treatments, process-of-care change etc.</i></p>
-            <table width = 800>
+            to modify a health outcome. This definition includes, drugs, surgical procedures, devices, behavioral treatments, process-of-care change etc.</small>
+				</td>
+			</tr>
+		</table>
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q13input01" onClick="Q13input01UD();" type="radio" <?php if (isset($PQ13input01) && $PQ13input01=="No") echo "checked";?> value="No" id="Q13input01_no"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%">No - <small>please skip to question 14.</small> </td>
+			</tr>
+		</table>
+
+
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q13input01" onClick="Q13input01UD();" type="radio" <?php if (isset($PQ13input01) && $PQ13input01=="Yes") echo "checked";?> value="Yes" id="Q13input01_yes"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%">Yes - <small>please answer Question 13 subsections below.</small> </td>
+			</tr>
+        </table>
+		<br>
+
+		<!--.............. Section 3: Q13a ..............-->
+            <table id = "sectionsub">	
                 <tr>
-                    <td>
-                    	<div id="formCheckBox">
-                    		<input type="radio" name="Q13input01" <?php if (isset($PQ13input01) && $PQ13input01=="No") echo "checked";?> onClick="Q13input01UD();" value="No" id="Q13input01_no" />No - <i>please skip to question 14</i>
-                    	</div>
-                    </td>
-                    <td>
-                    	<div id="formCheckBox">
-                    		<input type="radio" name="Q13input01" <?php if (isset($PQ13input01) && $PQ11input03=="Yes") echo "checked";?> onClick="Q13input01UD();" value="Yes" id="Q13input01_yes" />Yes - <i>please answer Question 13 subsections below.</i>
-                    	</div>
-                    </td>
-                </tr>
-            </table>
-            <table id = "sectionsub">
-                <tr>
-                	<th id="leftcol">13a</th>
+                	<th id="leftcol"><label class="normal" id="Q13ainput01L"><span class="red">*</span></label>13a</th>
                 	<th id ="rightcol">Will a placebo/non-treatment group be used? (<a href="https://www.nhmrc.gov.au/book/chapter-3-3-interventions-and-therapies-including-clinical-and-non-clinical-trials-and" target="_blank">NS 3.3.10</a>)</th>
                 </tr>
             </table>
-            <table width = 800>
-                <tr>
-                	<td>
-                		<div id="formCheckBox">
-                			<input type="radio" name="Q13ainput01" <?php if (isset($PQ13ainput01) && $PQ13ainput01=="No") echo "checked";?> value="No" id="Q13ainput01_no" />No - <i>please outline why a placebo or non-treatment group will not be used.</i>
-                		</div>
-                	</td>
-                	<td>
-                		<div id="formCheckBox">
-                			<input type="radio" name="Q13ainput01" <?php if (isset($PQ13ainput01) && $PQ13ainput01=="Yes") echo "checked";?> value="Yes" id="Q13ainput01_yes" />Yes - <i>please describe why a placebo or non-treatment group is the best comparator.</i>
-                		</div>
-                	</td>
-                </tr>
-            </table>
-            <textarea name="Q13ainput02" cols="205" rows="7"><?php if (isset($PQ13aintput02))echo $PQ13ainput02; ?></textarea> 
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q13ainput01" onClick="Q13ainput01UD();" type="radio" <?php if (isset($PQ13ainput01) && $PQ13ainput01=="No") echo "checked";?> value="No" id="Q13ainput01_no"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%"><small>No - please outline why a placebo or non-treatment group will not be used.</small> </td>
+			</tr>
+        </table>
+
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q13ainput01" onClick="Q13ainput01UD();" type="radio" <?php if (isset($PQ13ainput01) && $PQ13ainput01=="Yes") echo "checked";?> value="Yes" id="Q13ainput01_yes"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%"><small>Yes - please describe why a placebo or non-treatment group is the best comparator.</small> </td>
+			</tr>
+        </table>
+
+        <p><label class="normal" id="Q13ainput02L"><span class="red">*</span></label></p>
+	    <textarea name="Q13ainput02" id="Q13ainput02" onBlur="Q13ainput02UD();" cols="93" rows="7"><?php if (isset($PQ13aintput02))echo $PQ13ainput02; ?></textarea> 
+		<br><br>
             
+			<!--.............. Section 3: Q13b ..............-->
             <table id = "sectionsub">
                 <tr>
-                    <th id="leftcol">13b</th>
+                    <th id="leftcol"><label class="normal" id="Q13binput01L"><span class="red">*</span></label>13b</th>
                     <th id ="rightcol">Has this trial been registered? (<a href="https://www.nhmrc.gov.au/book/chapter-3-3-interventions-and-therapies-including-clinical-and-non-clinical-trials-and" target="_blank">NS 3.3.12</a>)</th>
                 </tr>
             </table>
-            <table width = 800>
-                <tr>
-                    <td>
-                        <div id="formCheckBox">
-                        	<input type="radio" name="Q13binput01" <?php if (isset($PQ13binput01) && $PQ13binput01=="No") echo "checked";?> value="No" id="Q13binput01_no" />No
-                        </div>
-                    </td>
-                    <td>
-                        <div id="formCheckBox">
-                        	<input type="radio" name="Q13binput01" <?php if (isset($PQ13binput01) && $PQ13binput01=="Yes") echo "checked";?> value="Yes" id="Q13binput01_yes" />Yes - <i>please provide the registration number and the name of the trial registry in the space below.</i>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <textarea name="Q13binput02" cols="205" rows="1"><?php if (isset($PQ13binput02))echo $PQ13binput02; ?></textarea> 
-            
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q13binput01" onClick="Q13binput01UD();" type="radio" <?php if (isset($PQ13binput01) && $PQ13binput01=="No") echo "checked";?> value="No" id="Q13binput01_no"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%"><small>No</small> </td>
+			</tr>
+        </table>
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q13binput01" onClick="Q13binput01UD();" type="radio" <?php if (isset($PQ13binput01) && $PQ13binput01=="Yes") echo "checked";?> value="Yes" id="Q13binput01_yes"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%"><small>Yes - please provide the registration number and the name of the trial registry in the space below.</small> </td>
+			</tr>
+        </table>
+
+        <p><label class="normal" id="Q13binput02L"><span class="red">*</span></label></p>
+        <textarea name="Q13binput02" id="Q13binput02" cols="93" rows="1" disabled="disabled" onBlur="Q13binput02UD();"><?php if (isset($PQ13binput02))echo $PQ13binput02; ?></textarea> 
+        <br><br>
+
+			<!--.............. Section 3: Q13c ..............-->
             <table id = "sectionsub">
                 <tr>
-                	<th id="leftcol">13c</th>
+                	<th id="leftcol"><label class="normal" id="Q13cinput01L"><span class="red">*</span></label>13c</th>
                 	<th id ="rightcol">Are the facilities, expertise and experience available sufficient for the trial to be conducted safely? (<a href="https://www.nhmrc.gov.au/book/chapter-3-3-interventions-and-therapies-including-clinical-and-non-clinical-trials-and" target="_blank">NS 3.3.5</a>)</th>
                 </tr>
             </table>
-            <table width = 800>
-                <tr>
-                    <td>
-                        <div id="formCheckBox">
-                        	<input type="radio" name="Q13cinput01" <?php if (isset($PQ13cinput01) && $PQ13cinput01=="No") echo "checked";?> value="No" id="Q13cinput01_no" />No - <i>please indicate how you will address this in the space below.</i>
-                        </div>
-                    </td>
-                    <td>
-                        <div id="formCheckBox">
-                        	<input type="radio" name="Q13cinput01" <?php if (isset($PQ13cinput01) && $PQ13cinput01=="Yes") echo "checked";?> value="Yes" id="Q13cinput01_yes" />Yes
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <textarea name="Q13cinput02" cols="205" rows="4"><?php if (isset($PQcinput02))echo $PQcinput02; ?></textarea>
+
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q13cinput01" onClick="Q13cinput01UD();" type="radio" <?php if (isset($PQ13cinput01) && $PQ13cinput01=="No") echo "checked";?> value="No" id="Q13cinput01_no"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%"><small>No - please indicate how you will address this in the space below.</small> </td>
+			</tr>
+        </table>
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q13cinput01" onClick="Q13cinput01UD();" type="radio" <?php if (isset($PQ13cinput01) && $PQ13cinput01=="Yes") echo "checked";?> value="Yes" id="Q13cinput01_yes"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%"><small>Yes</small> </td>
+			</tr>
+        </table>
+
+        <p><label class="normal" id="Q13cinput02L"><span class="red">*</span></label></p>
+        <textarea name="Q13cinput02" id="Q13cinput02" cols="93" rows="4" disabled="disabled"><?php if (isset($PQcinput02))echo $PQcinput02; ?></textarea>
+		<br><br>
+
+			<!--.............. Section 3: Q13d ..............-->
             <table id = "sectionsub">
                 <tr>
-                    <th id="leftcol">13d</th>
+                    <th id="leftcol"><label class="normal" id="Q13dinput01L"><span class="red">*</span></label>13d</th>
                     <th id ="rightcol">Does your Participant Information Statement make clear to the participant whether they will have continued access after 
                     the trial to treatment they have received during the trial, and on what terms? (<a href="https://www.nhmrc.gov.au/book/chapter-3-3-interventions-and-therapies-including-clinical-and-non-clinical-trials-and" target="_blank">NS 3.3.18</a>)</th>
                 </tr>
             </table>
-            <table width = 800>
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q13dinput01" onClick="Q13dinput01UD();" type="radio" <?php if (isset($PQ13dinput01) && $PQ13dinput01=="No") echo "checked";?> value="No" id="Q13dinput01_no"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%"><small>No</small> </td>
+			</tr>
+        </table>
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q13dinput01" onClick="Q13dinput01UD();" type="radio" <?php if (isset($PQ13dinput01) && $PQ13dinput01=="Yes") echo "checked";?> value="Yes" id="Q13dinput01_yes"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%"><small>Yes</small> </td>
+			</tr>
+        </table>
+		<br><br>
+
+		<!--.............. Section 3: Q14 ..............-->
+        	<table id = "sectionsub">
                 <tr>
-                    <td>
-                    	<div id="formCheckBox">
-                    		<input type="radio" name="Q13dinput01" <?php if (isset($PQ13dinput01) && $PQ13dinput01=="No") echo "checked";?> value="No" id="Q13dinput01_no" />No
-                    	</div>
-                    </td>
-                	<td>
-                		<div id="formCheckBox">
-                			<input type="radio" name="Q13dinput01" <?php if (isset($PQ13dinput01) && $PQ13dinput01=="Yes") echo "checked";?> value="Yes" id="Q13dinput01_yes" />Yes
-                		</div>
-                	</td>
-                </tr>
-            </table>
-            <table id = "sectionsub">
-                <tr>
-                	<th id="leftcol">14</th>
+                	<th id="leftcol"><label class="normal" id="Q14input01L"><span class="red">*</span></label>14</th>
                 	<th id ="rightcol">Does your research use health information (including biospecimens) that may reveal information that may be important for the health 
                 or future health of the donor(s), their blood relatives or their community? (<a href="https://www.nhmrc.gov.au/book/chapter-3-4-human-biospecimens-laboratory-based-research" target="_blank">NS 3.4.10</a>, <a href="https://www.nhmrc.gov.au/book/chapter-3-5-human-genetics" target="_blank">3.5.1 and 3.5.2</a>)</th>
                 </tr>
             </table>
-            <table width = 800>
-                <tr>
-                    <td>
-                        <div id="formCheckBox">
-                        	<input type="radio" name="Q14input01" <?php if (isset($PQ14input01) && $PQ14input01=="No") echo "checked";?> value="No" id="Q14input01_no" />No
-                        </div>
-                    </td>
-                    <td>
-                        <div id="formCheckBox">
-                        	<input type="radio" name="Q14input01" <?php if (isset($PQ14input01) && $PQ14input01=="Yes") echo "checked";?> value="Yes" id="Q14input01_yes" />Yes - <i>indicate below how you will address the management of any 
-                        proposed disclosure or non-disclosure of that information.</i>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <textarea name="Q14input02" cols="205" rows="7"><?php if (isset($PQ14input02))echo $PQ14input02; ?></textarea>
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q14input01" onClick="Q14input01UD();" type="radio" <?php if (isset($PQ14input01) && $PQ14input01=="No") echo "checked";?> value="No" id="Q14input01_no"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%"><small>No</small> </td>
+			</tr>
+        </table>
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q14input01" onClick="Q14input01UD();" type="radio" <?php if (isset($PQ14input01) && $PQ14input01=="Yes") echo "checked";?> value="Yes" id="Q14input01_yes"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%"><small>Yes - indicate below how you will address the management of any 
+                        proposed disclosure or non-disclosure of that information.</small> </td>
+			</tr>
+        </table>
+
+        <p><label class="normal" id="Q14input02L"><span class="red">*</span></label></p>
+        <textarea name="Q14input02" id="Q14input02" cols="93" rows="7" disabled="disabled"><?php if (isset($PQ14input02))echo $PQ14input02; ?></textarea>
+		<!--.............. Section 3: Q15 ..............-->
             <table id = "sectionsub">
                 <tr>
-                <th id="leftcol">15</th>
+                <th id="leftcol"><label class="normal" id="Q15input01L"><span class="red">*</span></label>15</th>
                 <th id ="rightcol">Does your research involve human genetics? (NS 3.5)</th>
                 </tr>
             </table>
-            <p><i>Specific requirements for research involving fetal tissue are detailed in Chapter 4.1 of the National Statement. Research involving 
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+         	   <td style="border:1px solid black;border-top:none;width:5%"><small>Specific requirements for research involving fetal tissue are detailed in Chapter 4.1 of the National Statement. Research involving 
             human embryos and gametes, including the derivation of human embryonic stem cell lines, is separately governed by the Research Involving 
             Human Embryos Act 2002 (Cth) and the Ethical Guidelines on the use of Assisted Reproductive Technology in Clinical Practice and Research (2007). 
-            Please refer to Chapter 3.5 of the National Statement for more information.</i></p>
-            <table width = 800>
-                <tr>
-                    <td>
-                    	<div id="formCheckBox">
-                    		<input type="radio" name="Q15input01" <?php if (isset($PQ15input01) && $PQ15input01=="No") echo "checked";?> value="No" id="Q15input01_no" />No
-                    	</div>
-                    </td>
-                    <td>
-                    	<div id="formCheckBox">
-                    		<input type="radio" name="Q15input01" <?php if (isset($PQ15input01) && $PQ15input01=="Yes") echo "checked";?> value="Yes" id="Q15input01_yes" />Yes - <i>please address in the space below the parts of 
-                    Section 3.5 of the National Statement that are relevant to this project.</i>
-                    	</div>
-                    </td>
-                </tr>
-            </table>
-			<textarea name="Q15input02" cols="205" rows="10"><?php if (isset($PQ15input02))echo $PQ15input02; ?></textarea> 
-            </div>
+            Please refer to Chapter 3.5 of the National Statement for more information.</small></td>
+			</tr>
+		</table>
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q15input01" onClick="Q15input01UD();" type="radio" <?php if (isset($PQ15input01) && $PQ15input01=="No") echo "checked";?> value="No" id="Q15input01_no"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%"><small>No</small> </td>
+			</tr>
+        </table>
+
+		<table style="border-collapse: collapse;width:75%">
+			<tr>
+				<td style="border:1px solid black;border-top:none;width:5%"> <input name="Q15input01" onClick="Q15input01UD();" type="radio" <?php if (isset($PQ15input01) && $PQ15input01=="Yes") echo "checked";?> value="Yes" id="Q15input01_yes"/> </td>
+				<td style="border:1px solid black;border-top:none;width:95%"><small>Yes - please address in the space below the parts of 
+                    Section 3.5 of the National Statement that are relevant to this project.</small> </td>
+			</tr>
+        </table>
+
+        <p><label class="normal" id="Q15input02L"><span class="red">*</span></label></p>
+		<textarea name="Q15input02" id="Q15input02" cols="93" rows="10" disabled="disabled"><?php if (isset($PQ15input02))echo $PQ15input02; ?></textarea>
+		</div>
+		<!--.............. Section 4: Q15 ..............-->
+
             <div class="TabbedPanelsContent"> <!-- Section 4 -->
 				<table id="section">
 				  <tr>
